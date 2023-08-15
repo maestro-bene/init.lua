@@ -18,12 +18,40 @@
 ----------------------------------
 
 ## Things to note before cloning, and building the nvim environment
-
+- Download the latest Neovim version using your OS's package manager (debian or ubuntu : apt, arch : pacman, windows : winget or chocolatey)
 - Download [ripgrep](https://github.com/BurntSushi/ripgrep) following the installation process for your OS
 - Download the "[Hacker Nerd Font](https://www.nerdfonts.com/font-downloads)" or any other nerd font (for the nvim tree icons to display  properly) and install it on your system
 - Set a environment variable called HOME, pointing to the home directory for your user (if not already present)
 - Make a .nvim/undodir directory under the user's home directory
 
+----------------------------------
+
+## Installation guide
+
+> A script is in preparation, it should come out in the near future. 
+> It will take into account the prerequisites listed above
+
+
+1. Read and install the prerequisites listed above (or use the install script if available)
+2. Go into your Home directory, and if on Windows into `HOME\Appdata\Local\`
+3. Create a .nvim directory (or nvim if on Windows)
+4. Clone the repo using SSH if configured, or HTTPS if not :
+   
+   SSH :
+   ```
+   git@github.com:maestro-bene/init.lua.git
+   ```
+   HTTPS :
+   ```
+   https://github.com/maestro-bene/init.lua.git
+   ```
+5. Open neovim inside `init.lua`, type `:so` to source the file
+6. Then go, -still with neovim- in `lua/maestro-b/packer.lua` and type `:so`, then type `:PackerSync`
+   > This should source the file, and install all the necessary plugins,
+7. Close neovim
+8. Reopen it back up and watch the magic happen
+9. And git gud as they say !
+    
 ----------------------------------
 
 ### Enabling / Disabling nvim-tree
