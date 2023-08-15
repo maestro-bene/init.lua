@@ -18,3 +18,6 @@ To enable or disable nvim-tree, either :
 - Type `:NvimTreeToggle` when already using nvim
 - Go to the first init.lua, and comment (add --) the following line :
 `require("nvim-tree").setup()`
+
+To finish, here's a little cheat sheet on Vim basic commands / motions :
+![Great cheat sheet](/assets/images/cheat-sheet.png)
