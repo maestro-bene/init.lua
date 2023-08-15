@@ -1,11 +1,11 @@
-# NeoVim's ultimate config files
+# 🚄 ⚡ NeoVim's ultimate config files 
 
  This repo contains my configurations for a smooth NeoVim time baby !
 
  It has been mostly created by ThePrimeagen, you can find his init.lua [here](https://github.com/ThePrimeagen/init.lua).
  
- I simply customized it, removed some things that were'nt useful to me, and added nvim-tree
- > Be careful about nvim-tree : I do not disable netrw because I like to use it, even with nvim-tree (not recommended)...
+ I simply customized it, removed some things that were'nt useful to me, and added nvim-tree 🌲
+ > Be careful about nvim-tree : I do not disable netrw because I like to use it, even with nvim-tree  (not recommended)...
 > 
  > I just think nvim-tree is better when you don't know your way around the structure of a project yet
 >
@@ -26,7 +26,7 @@
 
 ----------------------------------
 
-## Installation guide
+## ⬇️ Installation guide
 
 > A script is in preparation, it should come out in the near future. 
 > It will take into account the prerequisites listed above
@@ -54,7 +54,7 @@
     
 ----------------------------------
 
-### Enabling / Disabling nvim-tree
+### 🌲 Enabling / Disabling nvim-tree
 
 To enable or disable nvim-tree, either :
 - Type `:NvimTreeToggle` when already using nvim
