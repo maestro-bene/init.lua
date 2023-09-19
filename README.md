@@ -19,6 +19,17 @@
 
 ## ❗ Things to note before cloning, and building the nvim environment
 - Download the [latest Neovim version](https://github.com/neovim/neovim/wiki/Installing-Neovim) using your OS's package manager (debian or ubuntu : apt, arch : pacman, windows : winget or chocolatey)
+- Download Packer (a nice Neovim package manager)
+
+  Unix/Linux :
+  ```
+  git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+  ```
+  PowerShell :
+  ```
+  git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
+  ```
 - Download [ripgrep](https://github.com/BurntSushi/ripgrep) following the installation process for your OS
 - Download the "[Hacker Nerd Font](https://www.nerdfonts.com/font-downloads)" or any other nerd font (for the nvim tree icons to display  properly) and install it on your system
 - Set a environment variable called `HOME`, pointing to the home directory for your user (if not already present)
