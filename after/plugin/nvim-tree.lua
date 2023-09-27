@@ -2,6 +2,6 @@
 require("nvim-tree").setup{
     hijack_cursor = true,
     filters = {
-        custom = {"node_modules"},
+        custom = {"node_modules", ".git"},
      }
 }
