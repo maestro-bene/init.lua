@@ -2,7 +2,6 @@
 --vim.g.loaded_netrw = 1
 --vim.g.loaded_netrwPlugin = 1
 
--- set termguicolors to enable highlight groups
-vim.opt.termguicolors = true
-
-require("maestro-b")
+require("maestro-bene.core")
+require("maestro-bene.lazy")
+vim.g.python3_host_prog = "/opt/homebrew/bin/python3"
