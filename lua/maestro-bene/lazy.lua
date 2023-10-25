@@ -13,6 +13,12 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+vim.cmd([[command! -nargs=0 GoToCommand :Telescope commands]])
+vim.cmd([[command! -nargs=0 GoToFile :Telescope find_files]])
+vim.cmd([[command! -nargs=0 Grep :Telescope live_grep]])
+vim.cmd([[command! -nargs=0 SmartGoTo :Telescope smart_goto]])
+vim.o.cursorlineopt = "number"
+
 require("lazy").setup({
 	{ import = "maestro-bene.plugins" },
 	{ import = "maestro-bene.plugins.lsp" },

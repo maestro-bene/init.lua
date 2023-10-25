@@ -54,6 +54,7 @@ return {
 					"yaml",
 					"dockerfile",
 					"gitignore",
+					"norg",
 				},
 				incremental_selection = {
 					enable = true,
