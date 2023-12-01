@@ -33,7 +33,6 @@ return {
 				"golangci_lint_ls",
 				"gopls",
 				"html",
-				"java_language_server",
 				"lua_ls",
 				"pyright",
 				"rust_analyzer",

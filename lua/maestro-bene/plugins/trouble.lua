@@ -4,16 +4,21 @@ return {
 	config = function()
 		vim.keymap.set("n", "<leader>xx", function()
 			require("trouble").open()
-		end)
+		end, { desc = "Trouble" })
 		vim.keymap.set("n", "<leader>xw", function()
 			require("trouble").open("workspace_diagnostics")
-		end)
+		end, { desc = "Workspace diagnostics" })
 		vim.keymap.set("n", "<leader>xd", function()
 			require("trouble").open("document_diagnostics")
-		end)
-		vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { silent = true, noremap = true })
+		end, { desc = "Document diagnostics" })
+		vim.keymap.set(
+			"n",
+			"<leader>xq",
+			"<cmd>TroubleToggle quickfix<cr>",
+			{ desc = "Trouble quickfix", silent = true, noremap = true }
+		)
 		vim.keymap.set("n", "<leader>xl", function()
 			require("trouble").open("loclist")
-		end)
+		end, { desc = "Trouble loclist" })
 	end,
 }

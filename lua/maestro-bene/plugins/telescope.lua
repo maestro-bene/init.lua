@@ -37,6 +37,7 @@ return {
 					"go/.*",
 					"Applications/.*",
 					"deps/.*",
+					"data/.*",
 				},
 			},
 			extensions = {
@@ -71,9 +72,14 @@ return {
 			"<cmd>lua require('telescope').extensions.bookmarks.bookmarks()<cr>",
 			{ desc = "Find and open a bookmark" }
 		)
-		vim.keymap.set("n", "<leader>fz", require("telescope").extensions.zoxide.list)
-		vim.keymap.set("n", "<leader>fg", require("telescope").extensions.repo.list)
-		vim.keymap.set("n", "<leader>fh", require("telescope").extensions.repo.cached_list)
-		vim.keymap.set("n", "<leader>cl", "<cmd>Telescope neoclip<cr>")
+		vim.keymap.set("n", "<leader>fz", require("telescope").extensions.zoxide.list, { desc = "Fzf Zoxide" })
+		vim.keymap.set("n", "<leader>fg", require("telescope").extensions.repo.list, { desc = "Fzf Repos" })
+		vim.keymap.set(
+			"n",
+			"<leader>fh",
+			require("telescope").extensions.repo.cached_list,
+			{ desc = "Fzf Repos cached" }
+		)
+		vim.keymap.set("n", "<leader>cl", "<cmd>Telescope neoclip<cr>", { desc = "Neoclip" })
 	end,
 }

@@ -6,16 +6,18 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 	},
 	config = function()
-		--vim.api.nvim_set_keymap("v", "<leader>ri", [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
+		vim.keymap.set("v", "<leader>re", ":Refactor extract", { desc = "Refactor extract" })
+		vim.keymap.set("v", "<leader>rf", ":Refactor extract_to_file ", { desc = "Refactor extract to file" })
 
-		vim.keymap.set("v", "<leader>re", ":Refactor extract")
-		vim.keymap.set("v", "<leader>rf", ":Refactor extract_to_file ")
+		vim.keymap.set("v", "<leader>rv", ":Refactor extract_var ", { desc = "Refactor extract variable" })
+		vim.keymap.set({ "n", "v" }, "<leader>ri", ":Refactor inline_var", { desc = "Refactor inline variable" })
 
-		vim.keymap.set("v", "<leader>rv", ":Refactor extract_var ")
-
-		vim.keymap.set({ "n", "v" }, "<leader>ri", ":Refactor inline_var")
-
-		vim.keymap.set("n", "<leader>rb", ":Refactor extract_block")
-		vim.keymap.set("n", "<leader>rbf", ":Refactor extract_block_to_file")
+		vim.keymap.set("n", "<leader>rb", ":Refactor extract_block", { desc = "Refactor extract block" })
+		vim.keymap.set(
+			"n",
+			"<leader>rbf",
+			":Refactor extract_block_to_file",
+			{ desc = "Refactor extract block to file" }
+		)
 	end,
 }
