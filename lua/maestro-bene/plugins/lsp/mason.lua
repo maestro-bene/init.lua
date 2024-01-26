@@ -46,7 +46,6 @@ return {
 		mason_tool_installer.setup({
 			ensure_installed = {
 				"black", -- python formatter
-				"clang-format", -- c formatter
 				"eslint_d", -- js linter
 				"gofumpt", -- go formatter
 				"goimports", -- go imports fmt

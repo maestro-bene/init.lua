@@ -2,4 +2,4 @@
 vim.g.mapleader = " "
 
 -- this defines the path for the python binary
-vim.g.python3_host_prog = "/opt/homebrew/bin/python3"
+-- vim.g.python3_host_prog = "/opt/homebrew/bin/python3"
