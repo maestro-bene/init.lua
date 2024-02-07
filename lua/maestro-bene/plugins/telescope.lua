@@ -6,6 +6,7 @@ return {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"nvim-tree/nvim-web-devicons",
 		"nvim-treesitter/nvim-treesitter",
+		"nvim-telescope/telescope-github.nvim",
 	},
 	config = function()
 		local telescope = require("telescope")
@@ -60,6 +61,7 @@ return {
 		telescope.load_extension("zoxide")
 		telescope.load_extension("repo")
 		telescope.load_extension("neoclip")
+		telescope.load_extension("gh")
 		--
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness
@@ -83,5 +85,14 @@ return {
 			{ desc = "Fzf Repos cached" }
 		)
 		vim.keymap.set("n", "<leader>cl", "<cmd>Telescope neoclip<cr>", { desc = "Neoclip" })
+		vim.keymap.set("n", "<leader>gi", "<cmd>Telescope gh issues<cr>", { desc = "Fuzzy find github issues" })
+		vim.keymap.set(
+			"n",
+			"<leader>gpr",
+			"<cmd>Telescope gh pull_request<cr>",
+			{ desc = "Fuzzy find github pull requests" }
+		)
+		vim.keymap.set("n", "<leader>gg", "<cmd>Telescope gh gist<cr>", { desc = "Fuzzy find github gist" })
+		vim.keymap.set("n", "<leader>gr", "<cmd>Telescope gh run<cr>", { desc = "Run github" })
 	end,
 }

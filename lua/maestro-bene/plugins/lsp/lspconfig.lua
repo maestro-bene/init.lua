@@ -24,6 +24,8 @@ return {
 			"rust_analyzer",
 			"tsserver",
 			"jdtls",
+			"kotlin_language_server",
+			"intelephense",
 		}
 
 		local lsps_to_configure = {

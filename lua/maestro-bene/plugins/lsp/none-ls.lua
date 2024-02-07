@@ -22,6 +22,7 @@ return {
 				"gofumpt", -- go fmt
 				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
+				"easy-coding-standard", -- php formatter and linter
 			},
 		})
 
