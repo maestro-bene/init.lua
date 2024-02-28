@@ -3,11 +3,13 @@ return {
 	event = "InsertEnter",
 	dependencies = {
 		"hrsh7th/cmp-buffer", -- source for text in buffer
+		"hrsh7th/cmp-cmdline", -- source for text in cmd line of nvim
 		"hrsh7th/cmp-path", -- source for file system paths
 		"L3MON4D3/LuaSnip", -- snippet engine
 		"saadparwaiz1/cmp_luasnip", -- for autocompletion
 		"rafamadriz/friendly-snippets", -- useful snippets
 		"onsails/lspkind.nvim", -- vs-code like pictograms
+		"petertriho/cmp-git",
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -51,6 +53,27 @@ return {
 					ellipsis_char = "...",
 				}),
 			},
+		})
+		cmp.setup.filetype("gitcommit", {
+			sources = cmp.config.sources({
+				{ name = "git" }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+			}, {
+				{ name = "buffer" },
+			}),
+		})
+		cmp.setup.cmdline({ "/", "?" }, {
+			mapping = cmp.mapping.preset.cmdline(),
+			sources = {
+				{ name = "buffer" },
+			},
+		})
+		cmp.setup.cmdline(":", {
+			mapping = cmp.mapping.preset.cmdline(),
+			sources = cmp.config.sources({
+				{ name = "path" },
+			}, {
+				{ name = "cmdline" },
+			}),
 		})
 	end,
 }
