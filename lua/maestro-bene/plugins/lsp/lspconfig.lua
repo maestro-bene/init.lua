@@ -25,7 +25,8 @@ return {
 			"tsserver",
 			"jdtls",
 			"kotlin_language_server",
-			"intelephense",
+			-- "intelephense",
+			"phpactor",
 		}
 
 		local lsps_to_configure = {
