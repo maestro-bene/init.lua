@@ -42,7 +42,7 @@ keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 --keymap.set("n", "<leader>qk", "<cmd>lnext<CR>zz")
 --keymap.set("n", "<leader>qj", "<cmd>lprev<CR>zz")
 
-keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace word (file)" })
+keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace word (file)" })
 keymap.set("n", "<leader>vc", "<cmd>e ~/.config/nvim/<CR>", { desc = "Access nvim config" })
 keymap.set("n", "<leader><leader>", function()
 	vim.cmd("w")
