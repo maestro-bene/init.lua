@@ -51,6 +51,22 @@ return {
 						["<CR>"] = { action = z_utils.create_basic_command("edit") },
 					},
 				},
+				gpt = {
+					title = "Gpt Actions",
+					commands = {
+						"add_tests",
+						"chat",
+						"docstring",
+						"explain_code",
+						"fix_bugs",
+						"grammar_correction",
+						"interactive",
+						"optimize_code",
+						"summarize",
+						"translate",
+					},
+					theme = require("telescope.themes").get_dropdown({}),
+				},
 			},
 		})
 
@@ -83,5 +99,6 @@ return {
 		)
 		keymap.set("n", "<leader>gg", "<cmd>Telescope gh gist<cr>", { desc = "Fuzzy find github gist" })
 		keymap.set("n", "<leader>gr", "<cmd>Telescope gh run<cr>", { desc = "Run github" })
+		keymap.set("n", "<leader>c<leader>", "<cmd>Telescope gpt<cr>", { desc = "Fuzzy find ChatGPT Run" })
 	end,
 }
