@@ -45,10 +45,7 @@ return {
 				},
 			},
 			extensions = {
-				bookmarks = {
-					-- Provide the options here to override the default values.
-					selected_browser = "safari",
-				},
+				bookmarks = {},
 				zoxide = {
 					mappings = {
 						["<CR>"] = { action = z_utils.create_basic_command("edit") },
@@ -71,29 +68,20 @@ return {
 		keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
 		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
+		keymap.set("n", "<leader>fb", "<cmd>Telescope bookmarks<cr>", { desc = "Find and open a bookmark" })
+
+		keymap.set("n", "<leader>fz", require("telescope").extensions.zoxide.list, { desc = "Fzf Zoxide" })
+		keymap.set("n", "<leader>fg", require("telescope").extensions.repo.list, { desc = "Fzf Repos" })
+		keymap.set("n", "<leader>fh", require("telescope").extensions.repo.cached_list, { desc = "Fzf Repos cached" })
+		keymap.set("n", "<leader>gc", "<cmd>Telescope neoclip<cr>", { desc = "Neoclip" })
+		keymap.set("n", "<leader>gi", "<cmd>Telescope gh issues<cr>", { desc = "Fuzzy find github issues" })
 		keymap.set(
-			"n",
-			"<leader>fb",
-			"<cmd>lua require('telescope').extensions.bookmarks.bookmarks()<cr>",
-			{ desc = "Find and open a bookmark" }
-		)
-		vim.keymap.set("n", "<leader>fz", require("telescope").extensions.zoxide.list, { desc = "Fzf Zoxide" })
-		vim.keymap.set("n", "<leader>fg", require("telescope").extensions.repo.list, { desc = "Fzf Repos" })
-		vim.keymap.set(
-			"n",
-			"<leader>fh",
-			require("telescope").extensions.repo.cached_list,
-			{ desc = "Fzf Repos cached" }
-		)
-		vim.keymap.set("n", "<leader>cl", "<cmd>Telescope neoclip<cr>", { desc = "Neoclip" })
-		vim.keymap.set("n", "<leader>gi", "<cmd>Telescope gh issues<cr>", { desc = "Fuzzy find github issues" })
-		vim.keymap.set(
 			"n",
 			"<leader>gpr",
 			"<cmd>Telescope gh pull_request<cr>",
 			{ desc = "Fuzzy find github pull requests" }
 		)
-		vim.keymap.set("n", "<leader>gg", "<cmd>Telescope gh gist<cr>", { desc = "Fuzzy find github gist" })
-		vim.keymap.set("n", "<leader>gr", "<cmd>Telescope gh run<cr>", { desc = "Run github" })
+		keymap.set("n", "<leader>gg", "<cmd>Telescope gh gist<cr>", { desc = "Fuzzy find github gist" })
+		keymap.set("n", "<leader>gr", "<cmd>Telescope gh run<cr>", { desc = "Run github" })
 	end,
 }
