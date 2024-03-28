@@ -1,6 +1,8 @@
 return {
 	"ruifm/gitlinker.nvim",
 	lazy = true,
+	event = { "BufReadPre" },
+	keys = { "<leader>gb", "<leader>gY", "<leader>gB", "<leader>gy" },
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()
 		vim.api.nvim_set_keymap(
