@@ -18,14 +18,14 @@ return {
 		"onsails/lspkind.nvim", -- vs-code like pictograms
 		"petertriho/cmp-git",
 		"davidsierradz/cmp-conventionalcommits",
-		"garyhurtz/cmp_kitty",
+		-- "garyhurtz/cmp_kitty",
 		"mtoohey31/cmp-fish",
 		"andersevenrud/cmp-tmux",
 	},
 	config = function()
 		local cmp = require("cmp")
 
-		require("cmp_kitty").setup()
+		-- require("cmp_kitty").setup()
 
 		local luasnip = require("luasnip")
 
