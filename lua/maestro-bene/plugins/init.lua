@@ -8,6 +8,7 @@ return {
 	"andersevenrud/cmp-tmux",
 	"hrsh7th/cmp-emoji",
 	"hrsh7th/cmp-nvim-lsp",
+	"echasnovski/mini.icons",
 	-- To be tested more
 	--"inkarkat/vim-ReplaceWithRegister", -- replace with register contents using motion (gr + motion)
 }
