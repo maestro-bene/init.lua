@@ -65,6 +65,7 @@ return {
           end
 
           pcall(vim.treesitter.start, bufnr)
+          vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
         end,
       })
     end,

@@ -5,6 +5,7 @@ return {
     ---@type BuffonConfig
     opts = {
       open = {
+        by_default = false,
         default_position = "bottom_right"
       }
     },
