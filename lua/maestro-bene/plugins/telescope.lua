@@ -127,6 +127,7 @@ return {
         telescope.load_extension("gh")
         telescope.load_extension("conventional_commits")
         telescope.load_extension("file_browser")
+        telescope.load_extension("notify")
 
         -- set keymaps
 
@@ -141,6 +142,8 @@ return {
 
 
         keymap.set("n", "<leader>gcl", "<CMD>Telescope neoclip<CR>", { desc = "Neoclip" })
+
+        keymap.set("n", "<leader>gn", "<CMD>Telescope notify<CR>", { desc = "Notify" })
 
         keymap.set("n", "<leader>gi", "<CMD>Telescope gh issues<CR>", { desc = "Fuzzy find github issues" })
         keymap.set("n", "<leader>gpr", "<CMD>Telescope gh pull_request<CR>", { desc = "Fuzzy find github pull requests" })
