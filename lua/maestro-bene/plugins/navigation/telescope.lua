@@ -41,6 +41,7 @@ return {
 
 		local exclude_dirs = {
 			".asdf",
+			".obsidian",
 			".vim/bundle",
 			".docker",
 			"__pycache__",
