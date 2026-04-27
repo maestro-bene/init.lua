@@ -4,7 +4,14 @@ local keymap = vim.keymap -- for conciseness
 
 -- GENERAL KEYMAPS
 
-keymap.set("n", "<leader>q", "<cmd>q<CR>", { desc = "Exit bufr" })
+keymap.set("n", "<leader>q", "<cmd>q<CR>", { desc = "Exit buffer" })
+keymap.set("n", "<leader>sq", "<cmd>wq<CR>", { desc = "Write and Exit buffer" })
+keymap.set("n", "<Esc>", "<cmd>q<CR>", { desc = "Exit buffer" })
+keymap.set("n", "!<Esc>", "<cmd>q!<CR>", { desc = "Exit buffer w/o saving" })
+
+keymap.set("n", "<leader><leader>", function()
+	vim.cmd("w")
+end, { desc = "Save buffer" })
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
@@ -45,9 +52,6 @@ keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 
 keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace word (file)" })
 keymap.set("n", "<leader>vc", "<cmd>e ~/.config/nvim/<CR>", { desc = "Access nvim config" })
-keymap.set("n", "<leader><leader>", function()
-	vim.cmd("w")
-end, { desc = "Save bufr" })
 
 -- Window Management
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
