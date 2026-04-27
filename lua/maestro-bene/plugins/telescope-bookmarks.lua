@@ -7,7 +7,7 @@ return {
 		selected_browser = "safari",
 	},
 	dependencies = {
-		--   -- Only if you're using the Telescope extension
+		-- Only if you're using the Telescope extension
 		"nvim-telescope/telescope.nvim",
 	},
 }
