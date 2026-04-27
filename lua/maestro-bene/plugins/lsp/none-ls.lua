@@ -19,8 +19,11 @@ return {
 				"goimports", -- go imports fmt
 				"gofumpt", -- go fmt
 				"prettier", -- prettier formatter
+				"phpcs", -- php linter
+				"phpcsfixer", -- php formatter
+				"phpcs", -- php linter
 				"stylua", -- lua formatter
-				"easy-coding-standard", -- php formatter and linter
+				"trivy", -- System linter (containers etc)
 			},
 		})
 
@@ -46,9 +49,9 @@ return {
 			"eslint_d",
 			"mix",
 			"rustfmt",
-			"easy-coding-standard",
+			"phpcsfixer",
 		}
-		local diagnosting_server_names = { "eslint_d" }
+		local diagnosting_server_names = { "phpcs", "eslint_d", "trivy" }
 
 		local sources = {}
 
