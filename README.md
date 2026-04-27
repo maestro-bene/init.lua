@@ -28,11 +28,11 @@
 
 ## ⬇️ Installation guide
 
-> A script is in preparation, it should come out in the near future. 
+> 🏗️ A script is in preparation, it should come out in the near future. 
 > It will take into account the prerequisites listed above
 
 
-1. Read and install the prerequisites listed above (or use the install script if available)
+1. Read and install the prerequisites listed above (🚧 or use the install script if available 🚧)
 2. Go into your Home directory, and if on Windows into `HOME\Appdata\Local\`
 3. Create a .nvim directory (or nvim if on Windows)
 4. Clone the repo using SSH if configured, or HTTPS if not :
