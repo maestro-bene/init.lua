@@ -1,38 +1,63 @@
 return {
 	"ThePrimeagen/harpoon",
+	branch = "harpoon2",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
 	config = function()
 		local keymap = vim.keymap -- for conciseness
-		local mark = require("harpoon.mark")
-		local ui = require("harpoon.ui")
+		local harpoon = require("harpoon")
 
-		keymap.set("n", "<leader>hm", mark.add_file, { desc = "Mark file with harpoon" })
-		keymap.set(
-			"n",
-			"<leader>hn",
-			"<cmd>lua require('harpoon.ui').nav_next()<cr>",
-			{ desc = "Go to next harpoon mark" }
-		)
-		keymap.set(
-			"n",
-			"<leader>hp",
-			"<cmd>lua require('harpoon.ui').nav_prev()<cr>",
-			{ desc = "Go to previous harpoon mark" }
-		)
-		keymap.set("n", "<leader>hl", ui.toggle_quick_menu, { desc = "List Harpoon entries" })
+		harpoon:setup()
+
+		-- basic telescope configuration
+		local conf = require("telescope.config").values
+		local function toggle_telescope(harpoon_files)
+			local file_paths = {}
+			for _, item in ipairs(harpoon_files.items) do
+				table.insert(file_paths, item.value)
+			end
+
+			require("telescope.pickers")
+				.new({}, {
+					prompt_title = "Harpoon",
+					finder = require("telescope.finders").new_table({
+						results = file_paths,
+					}),
+					previewer = conf.file_previewer({}),
+					sorter = conf.generic_sorter({}),
+				})
+				:find()
+		end
+
+		vim.keymap.set("n", "<leader>ht", function()
+			toggle_telescope(harpoon:list())
+		end, { desc = "Open harpoon window" })
+
+		keymap.set("n", "<leader>hm", function()
+			harpoon:list():append()
+		end, { desc = "Mark file with harpoon" })
+
+		vim.keymap.set("n", "<leader>hp", function()
+			harpoon:list():prev()
+		end, { desc = "Go to previous Harpoon entry" })
+		vim.keymap.set("n", "<leader>hn", function()
+			harpoon:list():next()
+		end, { desc = "Go to next Harpoon entry" })
+		keymap.set("n", "<leader>hl", function()
+			harpoon.ui:toggle_quick_menu(harpoon:list())
+		end, { desc = "List Harpoon entries" })
 		keymap.set("n", "<leader>j", function()
-			ui.nav_file(1)
+			harpoon:list():select(1)
 		end, { desc = "Follow Harpoon 1" })
 		keymap.set("n", "<leader>k", function()
-			ui.nav_file(2)
+			harpoon:list():select(2)
 		end, { desc = "Follow Harpoon 2" })
 		keymap.set("n", "<leader>l", function()
-			ui.nav_file(3)
+			harpoon:list():select(3)
 		end, { desc = "Follow Harpoon 3" })
 		keymap.set("n", "<leader>m", function()
-			ui.nav_file(4)
+			harpoon:list():select(4)
 		end, { desc = "Follow Harpoon 4" })
 	end,
 }

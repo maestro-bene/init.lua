@@ -16,7 +16,6 @@ return {
 			ensure_installed = {
 				"astyle", -- java formatter
 				"black", -- python formatter
-				"clang_format", -- c and java formatter
 				"credo", -- elixir fmt
 				"eslint_d", -- js linter
 				"goimports", -- go imports fmt
@@ -41,7 +40,6 @@ return {
 
 		local formatting_server_names = {
 			"astyle",
-			"clang_format",
 			"stylua",
 			"black",
 			"goimports",
