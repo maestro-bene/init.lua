@@ -1,6 +1,6 @@
 return {
 	"tpope/vim-dadbod",
-	opt = true,
+	opt = false,
 	requires = {
 		"kristijanhusak/vim-dadbod-ui",
 		"kristijanhusak/vim-dadbod-completion",

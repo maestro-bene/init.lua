@@ -1,8 +1,13 @@
 return {
-	"ruifm/gitlinker.nvim",
-	lazy = true,
+	"linrongbin16/gitlinker.nvim",
+	lazy = false,
 	event = { "BufReadPre" },
-	keys = { "<leader>gb", "<leader>gY", "<leader>gB", "<leader>gy" },
+	cmd = "GitLink",
+	-- keys = { "<leader>gb", "<leader>gY", "<leader>gB", "<leader>gy" },
+	keys = {
+		{ "<leader>gy", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
+		{ "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
+	},
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()
 		vim.api.nvim_set_keymap(
@@ -29,9 +34,15 @@ return {
 			'<cmd>lua require"gitlinker".get_repo_url({action_callback = require"gitlinker.actions".open_in_browser})<cr>',
 			{ silent = true, desc = "Go to Git URL for this repository" }
 		)
-		require("gitlinker").setup({
-			mappings = nil,
-		})
+
+		-- local gitlinker_hosts = require("gitlinker.hosts")
+		--
+		-- require("gitlinker").setup({
+		-- 	mappings = nil,
+		-- 	callbacks = {
+		-- 		["gitlab.tech.orange"] = gitlinker_hosts.get_gitlab_type_url,
+		-- 	},
+		-- })
 
 		-- Creating this keymap after the setup in order to override default git linker copy line link
 		vim.api.nvim_set_keymap(
