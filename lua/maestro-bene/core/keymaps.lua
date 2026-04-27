@@ -4,15 +4,15 @@ local keymap = vim.keymap -- for conciseness
 
 -- GENERAL KEYMAPS
 
-keymap.set("n", "<leader>q", "<CMD>q<CR>", { desc = "Exit buffer" })
-keymap.set("n", "<leader>sq", "<CMD>wq<CR>", { desc = "Write and Exit buffer" })
-keymap.set("n", "<Esc>", "<CMD>q<CR>", { desc = "Exit buffer" })
-keymap.set("n", "!<Esc>", "<CMD>q!<CR>", { desc = "Exit buffer w/o saving" })
+keymap.set("n", "<leader>q", ":q<CR>", { desc = "Exit buffer" })
+keymap.set("n", "<leader>sq", ":wq<CR>", { desc = "Write and Exit buffer" })
+keymap.set("n", "<Esc>", ":q<CR>", { desc = "Exit buffer" })
+keymap.set("n", "!<Esc>", ":q!<CR>", { desc = "Exit buffer w/o saving" })
 
-keymap.set("n", "<leader>x", "<CMD>.lua<CR>", { desc = "Execute the current line" })
-keymap.set("n", "<leader>X", "<CMD>source %<CR>", { desc = "Execute the current file" })
+keymap.set("n", "<leader>x", ":.lua<CR>", { desc = "Execute the current line" })
+keymap.set("n", "<leader>X", ":source %<CR>", { desc = "Execute the current file" })
 
-keymap.set("n", "<leader><leader>", "<CMD>w<CR>", { desc = "Save buffer" })
+keymap.set("n", "<leader><leader>", ":w<CR>", { desc = "Save buffer" })
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
@@ -38,17 +38,17 @@ keymap.set("n", "N", "Nzzzv")
 keymap.set("x", "<leader>pe", [["_dP]], { desc = "Seems to be git push" })
 
 -- next greatest remap ever : asbjornHaland
-keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy into system clipboard" })
-keymap.set("n", "<leader>Y", [["+Y]])
+keymap.set("v", "<leader>y", [["+y]], { desc = "Copy into system clipboard" })
+keymap.set("n", "<leader>y", ":%y+<CR>", { desc = "Copy whole file into system clipboard" })
 
 -- quickfix list commands
-keymap.set("n", "<C-k>", "<CMD>cnext<CR>zz")
-keymap.set("n", "<C-j>", "<CMD>cprev<CR>zz")
---keymap.set("n", "<leader>qk", "<CMD>lnext<CR>zz")
---keymap.set("n", "<leader>qj", "<CMD>lprev<CR>zz")
+keymap.set("n", "<C-k>", ":cnext<CR>zz")
+keymap.set("n", "<C-j>", ":cprev<CR>zz")
+--keymap.set("n", "<leader>qk", ":lnext<CR>zz")
+--keymap.set("n", "<leader>qj", ":lprev<CR>zz")
 
 keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace word (file)" })
-keymap.set("n", "<leader>vc", "<CMD>e ~/.config/nvim/<CR>", { desc = "Access nvim config" })
+keymap.set("n", "<leader>vc", ":e ~/.config/nvim/<CR>", { desc = "Access nvim config" })
 
 -- Window Management
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
@@ -80,12 +80,12 @@ keymap.set(
 	{ noremap = true, silent = true, desc = "Remove 5 height to current window" }
 )
 
-keymap.set("n", "<leader>to", "<CMD>tabnew<CR>", { desc = "Open new tab" })
-keymap.set("n", "<leader>tq", "<CMD>tabclose<CR>", { desc = "Close current tab" })
-keymap.set("n", "<leader>tn", "<CMD>tabn<CR>", { desc = "Go to next tab" })
-keymap.set("n", "<leader>tp", "<CMD>tabp<CR>", { desc = "Go to previous tab" })
+keymap.set("n", "<leader>to", ":tabnew<CR>", { desc = "Open new tab" })
+keymap.set("n", "<leader>tq", ":tabclose<CR>", { desc = "Close current tab" })
+keymap.set("n", "<leader>tn", ":tabn<CR>", { desc = "Go to next tab" })
+keymap.set("n", "<leader>tp", ":tabp<CR>", { desc = "Go to previous tab" })
 
-keymap.set("n", "<leader>tf", "<CMD>tabnew %<CR>", { desc = "Open current buffer in new tab" })
+keymap.set("n", "<leader>tf", ":tabnew %<CR>", { desc = "Open current buffer in new tab" })
 
 -- Easily hit escape in terminal mode.
 keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
@@ -110,4 +110,5 @@ keymap.set("n", "k", function()
 	end
 end, { expr = true })
 
-keymap.set("n", "<leader>db", "<CMD>DBUIToggle<CR>", { desc = "Dadbod Toggle" })
+keymap.set("n", "<leader>db", ":DBUIToggle<CR>", { desc = "Dadbod Toggle" })
+keymap.set("n", "<leader>D", smart_diff, { desc = "Smart diff (Oil dirs or buffers)" })

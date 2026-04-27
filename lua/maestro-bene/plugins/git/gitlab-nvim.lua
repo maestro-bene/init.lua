@@ -1,27 +1,6 @@
 return {
 	"harrisoncramer/gitlab.nvim",
 	lazy = true,
-	keys = {
-		"glr",
-		"gls",
-		"glA",
-		"glR",
-		"glc",
-		"glC",
-		"glO",
-		"glm",
-		"gln",
-		"gld",
-		"glaa",
-		"glad",
-		"glla",
-		"glld",
-		"glra",
-		"glrd",
-		"glp",
-		"glo",
-		"glM",
-	},
 	dependencies = {
 		"MunifTanjim/nui.nvim",
 		"nvim-lua/plenary.nvim",
@@ -30,6 +9,170 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 	enabled = true,
+	keys = {
+		{
+			"glr",
+			function()
+				require("gitlab").review()
+			end,
+			desc = "Review",
+			mode = "n",
+		},
+		{
+			"gls",
+			function()
+				require("gitlab").summary()
+			end,
+			desc = "Summary",
+			mode = "n",
+		},
+		{
+			"glA",
+			function()
+				require("gitlab").approve()
+			end,
+			desc = "Approve",
+			mode = "n",
+		},
+		{
+			"glR",
+			function()
+				require("gitlab").revoke()
+			end,
+			desc = "Revoke",
+			mode = "n",
+		},
+		{
+			"glc",
+			function()
+				require("gitlab").create_comment()
+			end,
+			desc = "Create Comment",
+			mode = "n",
+		},
+		{
+			"glO",
+			function()
+				require("gitlab").create_mr()
+			end,
+			desc = "Create MR",
+			mode = "n",
+		},
+		{
+			"glm",
+			function()
+				require("gitlab").move_to_discussion_tree_from_diagnostic()
+			end,
+			desc = "Move to Discussion Tree",
+			mode = "n",
+		},
+		{
+			"gln",
+			function()
+				require("gitlab").create_note()
+			end,
+			desc = "Create Note",
+			mode = "n",
+		},
+		{
+			"gld",
+			function()
+				require("gitlab").toggle_discussions()
+			end,
+			desc = "Toggle Discussions",
+			mode = "n",
+		},
+		{
+			"glaa",
+			function()
+				require("gitlab").add_assignee()
+			end,
+			desc = "Add Assignee",
+			mode = "n",
+		},
+		{
+			"glad",
+			function()
+				require("gitlab").delete_assignee()
+			end,
+			desc = "Delete Assignee",
+			mode = "n",
+		},
+		{
+			"glla",
+			function()
+				require("gitlab").add_label()
+			end,
+			desc = "Add Label",
+			mode = "n",
+		},
+		{
+			"glld",
+			function()
+				require("gitlab").delete_label()
+			end,
+			desc = "Delete Label",
+			mode = "n",
+		},
+		{
+			"glra",
+			function()
+				require("gitlab").add_reviewer()
+			end,
+			desc = "Add Reviewer",
+			mode = "n",
+		},
+		{
+			"glrd",
+			function()
+				require("gitlab").delete_reviewer()
+			end,
+			desc = "Delete Reviewer",
+			mode = "n",
+		},
+		{
+			"glp",
+			function()
+				require("gitlab").pipeline()
+			end,
+			desc = "Pipeline",
+			mode = "n",
+		},
+		{
+			"glo",
+			function()
+				require("gitlab").open_in_browser()
+			end,
+			desc = "Open in Browser",
+			mode = "n",
+		},
+		{
+			"glM",
+			function()
+				require("gitlab").merge()
+			end,
+			desc = "Merge",
+			mode = "n",
+		},
+
+		-- Visual mode
+		{
+			"glc",
+			function()
+				require("gitlab").create_multiline_comment()
+			end,
+			desc = "Create Multiline Comment",
+			mode = "v",
+		},
+		{
+			"glC",
+			function()
+				require("gitlab").create_comment_suggestion()
+			end,
+			desc = "Create Comment Suggestion",
+			mode = "v",
+		},
+	},
 	build = function()
 		require("gitlab.server").build(true)
 	end, -- Builds the Go binary
