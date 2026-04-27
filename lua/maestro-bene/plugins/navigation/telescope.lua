@@ -11,14 +11,14 @@ return {
     "ibhagwan/fzf-lua",
     "nvim-telescope/telescope-fzf-native.nvim",
 
-    -- File Browser
-    "nvim-telescope/telescope-file-browser.nvim",
-
     -- Git Conflicts
     "Snikimonkd/telescope-git-conflicts.nvim",
 
     -- Clipboard manager
     "AckslD/nvim-neoclip.lua",
+
+    -- Notify
+    "rcarriga/nvim-notify",
 
     -- Zoxide
     "jvgrootveld/telescope-zoxide",
@@ -219,14 +219,6 @@ return {
         },
       },
       extensions = {
-        file_browser = {
-          theme = "ivy",
-          hijack_netrw = true,
-          mappings = {
-            ["i"] = {},
-            ["n"] = {},
-          },
-        },
         zoxide = {
           event = "VeryLazy",
           prompt_title = "[ Zoxide List ]",
@@ -261,6 +253,8 @@ return {
       },
     })
 
-    require("neoclip").setup()
+    require("neoclip").setup({
+      initial_mode = 'normal',
+    })
   end,
 }

@@ -37,17 +37,16 @@ keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Help tags" })
 keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Find keymaps" })
 keymap.set("n", "<leader>fo", builtin.vim_options, { desc = "Vim options" })
 
-
-keymap.set("n", "<leader>ee", function()
-  telescope.extensions.file_browser.file_browser({
-    path = vim.fn.expand("%:p:h"),
-    select_buffer = true
+keymap.set("n", "<leader>cl", telescope.extensions.neoclip.default, { desc = "Neoclip" })
+vim.keymap.set("n", "<leader>fn", function()
+  telescope.extensions.notify.notify({
+    previewer = false,
+    layout_strategy = "vertical",
+    layout_config = { width = 0.6, height = 0.7 },
+    initial_mode = "normal",
   })
-end, { desc = "Open Telescope File Browser" })
-
-keymap.set("n", "<leader>gcl", telescope.extensions.neoclip.default, { desc = "Neoclip" })
-keymap.set("n", "<leader>fn", telescope.extensions.notify.notify, { desc = "Notify" })
-keymap.set("n", "<leader>gcf", telescope.extensions.conflicts.conflicts, { desc = "Git conflicts" })
+end, { desc = "Notifications" })
+keymap.set("n", "<leader>cf", telescope.extensions.conflicts.conflicts, { desc = "Git conflicts" })
 keymap.set("n", "<leader>fz", telescope.extensions.zoxide.list, { desc = "Fuzzy find Zoxide" })
 
 -- Conform
