@@ -12,7 +12,7 @@ opt.autoindent = true -- copy indent from current line when starting new one
 opt.smartindent = true -- does the same, except it takes the syntax into account
 
 -- line wrapping
-opt.wrap = false -- disable line wrapping
+--opt.wrap = false -- disable line wrapping
 
 -- search settings
 opt.ignorecase = false -- ignore case when searching
