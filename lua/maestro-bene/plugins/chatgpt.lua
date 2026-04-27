@@ -1,5 +1,6 @@
 return {
-	"jackMort/ChatGPT.nvim",
+	-- "jackMort/ChatGPT.nvim",
+	"maestro-bene/Mistral.nvim",
 	enabled = true,
 	dependencies = {
 		"MunifTanjim/nui.nvim",
@@ -16,7 +17,7 @@ return {
 
 	config = function()
 		require("chatgpt").setup({
-			api_key_cmd = "/users/maestro-bene/.config/get-op-api-key.sh",
+			api_key_cmd = "/users/maestro-bene/.config/get-mistral-api-key.sh",
 		})
 	end,
 
@@ -25,7 +26,7 @@ return {
 		local wk = require("which-key")
 
 		wk.register({
-			a = {
+			aa = {
 				function()
 					chatgpt.edit_with_instructions()
 				end,
@@ -36,6 +37,17 @@ return {
 			mode = "v",
 		})
 
+		wk.register({
+			ac = {
+				function()
+					chatgpt.complete_code()
+				end,
+				"Complete Code",
+			},
+		}, {
+			prefix = "<leader>",
+			mode = "v",
+		})
 		return {
 			{ "<leader>aa", "<cmd>ChatGPT<cr>", desc = "ChatGPT" },
 			{ "<leader>ac", "<cmd>ChatGPTCompleteCode<cr>", desc = "ChatGPTCompleteCode" },

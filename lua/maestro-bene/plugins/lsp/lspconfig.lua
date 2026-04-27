@@ -168,6 +168,12 @@ return {
 					on_attach = on_attach(),
 					cmd = { "~/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" },
 				})
+			elseif my_lsp_tc == "jdtls" then
+				lspconfig[my_lsp_tc].setup({
+					capabilities = capabilities,
+					on_attach = on_attach(),
+					settings = {},
+				})
 			elseif my_lsp_tc == "omnisharp" then
 				lspconfig[my_lsp_tc].setup({
 					capabilities = capabilities,
