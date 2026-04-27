@@ -42,6 +42,7 @@ local two_spaces = {
 	"terraform",
 	"hcl",
 	"ruby",
+	"logstash",
 }
 
 vim.api.nvim_create_autocmd("FileType", {
