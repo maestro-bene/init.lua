@@ -26,6 +26,7 @@ require("lazy").setup({
 	{ import = "maestro-bene.plugins.diagnostics" },
 	{ import = "maestro-bene.plugins.editing-utils" },
 	{ import = "maestro-bene.plugins.extra" },
+	{ import = "maestro-bene.plugins.navigation" },
 	{ import = "maestro-bene.plugins.theme" },
 }, {
 	checker = {
