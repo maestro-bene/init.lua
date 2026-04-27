@@ -1,7 +1,8 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        event = { "BufReadPre", "BufNewFile" },
+        lazy = false,
+        -- branch = "main",
         build = ":TSUpdate",
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
@@ -12,7 +13,10 @@ return {
             local treesitter = require("nvim-treesitter.configs")
 
             -- configure treesitter
-            treesitter.setup({ -- enable syntax highlighting
+            treesitter.setup({
+                -- -- Directory to install parsers and queries to
+                -- install_dir = vim.fn.stdpath('data') .. '/site'
+                -- enable syntax highlighting
                 highlight = {
                     enable = true,
                     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
