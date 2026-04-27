@@ -33,12 +33,12 @@ return {
         "clangd",
         "cssls",
         -- "elixirls",
-        "golangci_lint_ls",
-        "gopls",
+        -- "golangci_lint_ls",
+        -- "gopls",
         "html",
         "lua_ls",
         "pyright",
-        "jdtls",
+        -- "jdtls",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
@@ -46,15 +46,18 @@ return {
 
     mason_tool_installer.setup({
       ensure_installed = {
-        "black", -- python formatter
-        "eslint_d", -- js linter
-        "gofumpt", -- go formatter
-        "goimports", -- go imports fmt
-        "isort", -- python formatter
-        "prettier", -- prettier formatter
-        -- "stylua", -- lua formatter
-        "trivy", -- code security
-        "shfmt", -- shell and bash formatter
+        "ast-grep",     -- used for c and cpp, but also
+        "black",        -- python formatter
+        "clang-format", -- c formatter
+        "eslint_d",     -- js linter
+        -- "gofumpt",      -- go formatter
+        -- "goimports",    -- go imports formatter
+        -- "golines",      -- go lines formatter
+        "isort",        -- python formatter
+        "prettier",     -- prettier formatter
+        "php-cs-fixer", -- php formatter
+        "trivy",        -- code security
+        "shfmt",        -- shell and bash formatter
       },
     })
   end,

@@ -7,17 +7,16 @@ return {
 
     conform.setup({
       formatters_by_ft = {
-        c = { "astyle", "clang_format" },
-        cpp = { "astyle" },
+        c = { "clang_format" },
+        -- cpp = { "astyle" },
         css = { "prettier" },
-        elixir = { "mix" },
-        go = { "gofumpt", "goimports", "golines" },
+        -- elixir = { "mix" },
+        -- go = { "gofumpt", "goimports", "golines" },
         html = { "prettier" },
-        java = { "jdtls" },
+        -- java = { "jdtls" },
         javascript = { "prettier", "eslint_d" },
         javascriptreact = { "prettier" },
         json = { "prettier" },
-        lua = { "stylua" },
         markdown = { "prettier" },
         php = { "php_cs_fixer" },
         python = { "isort", "black" },
