@@ -5,7 +5,8 @@ return {
 		dependencies = {
 			"rafamadriz/friendly-snippets",
 		},
-		version = "*",
+		build = "cargo build --release", -- for delimiters
+		version = "1.*",
 		config = function()
 			require("blink.cmp").setup({
 				snippets = { preset = "luasnip" },
@@ -14,7 +15,7 @@ return {
 					use_nvim_cmp_as_default = false,
 					nerd_font_variant = "normal",
 				},
-				fuzzy = { implementation = "lua" },
+				fuzzy = { implementation = "prefer_rust_with_warning" },
 				sources = {
 					per_filetype = {
 						codecompanion = { "codecompanion" },

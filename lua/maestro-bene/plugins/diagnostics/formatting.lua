@@ -24,7 +24,7 @@ return {
 				typescript = { "prettier" },
 				typescriptreact = { "prettier" },
 				yaml = { "prettier" },
-				bash = { "shellharden" },
+				bash = { "shellcheck" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
