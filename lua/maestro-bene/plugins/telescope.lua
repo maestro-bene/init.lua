@@ -77,6 +77,7 @@ return {
 		telescope.load_extension("repo")
 		telescope.load_extension("neoclip")
 		telescope.load_extension("gh")
+		telescope.load_extension("conventional_commits")
 
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness
@@ -90,7 +91,7 @@ return {
 		keymap.set("n", "<leader>fz", require("telescope").extensions.zoxide.list, { desc = "Fzf Zoxide" })
 		keymap.set("n", "<leader>fg", require("telescope").extensions.repo.list, { desc = "Fzf Repos" })
 		keymap.set("n", "<leader>fh", require("telescope").extensions.repo.cached_list, { desc = "Fzf Repos cached" })
-		keymap.set("n", "<leader>gc", "<cmd>Telescope neoclip<cr>", { desc = "Neoclip" })
+		keymap.set("n", "<leader>gcl", "<cmd>Telescope neoclip<cr>", { desc = "Neoclip" })
 		keymap.set("n", "<leader>gi", "<cmd>Telescope gh issues<cr>", { desc = "Fuzzy find github issues" })
 		keymap.set(
 			"n",
@@ -102,5 +103,6 @@ return {
 		keymap.set("n", "<leader>gr", "<cmd>Telescope gh run<cr>", { desc = "Run github" })
 		keymap.set("n", "<leader>c<leader>", "<cmd>Telescope gpt<cr>", { desc = "Fuzzy find ChatGPT Run" })
 		keymap.set("n", "<leader>ny", "<cmd>Telescope notify<cr>", { desc = "Notify" })
+		keymap.set("n", "<leader>gcc", "<cmd>Telescope conventional_commits<cr>", { desc = "conventional_commits" })
 	end,
 }
