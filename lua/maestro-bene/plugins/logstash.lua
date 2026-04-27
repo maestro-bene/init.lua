@@ -1,4 +1,4 @@
 return {
-	"robbles/logstash.vim",
+	"maestro-bene/logstash.vim",
 	filetype = "logstash",
 }
