@@ -76,3 +76,13 @@ keymap.set(
 
 -- Easily hit escape in terminal mode.
 keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
+
+keymap.set("n", "<leader>sd", ":lua smart_diff()<CR>", { noremap = true, silent = true, desc = "Smart diff within Oil" })
+
+keymap.set("n", "<leader>ds",
+  ":diffthis | vert new | setl bt=nofile bh=wipe noswapfile | silent 0put + | file [clipboard] | diffthis <CR>",
+  { noremap = true, silent = true, desc = "Diff with Clipboard content" })
+
+keymap.set({ 'n', 'v' }, '<leader>dn', ']c', { desc = 'Diff next hunk' })
+keymap.set({ 'n', 'v' }, '<leader>dp', ':diffput<CR>', { desc = 'Diff put (current -> other)' })
+keymap.set({ 'n', 'v' }, '<leader>do', ':diffget<CR>', { desc = 'Diff get (other -> current)' })
