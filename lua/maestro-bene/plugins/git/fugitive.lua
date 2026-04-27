@@ -3,12 +3,17 @@ return {
 	lazy = true,
 	keys = "<leader>gs",
 	config = function()
-		vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git status" })
-		local maestro_b_Fugitive = vim.api.nvim_create_augroup("maestro_b_Fugitive", {})
+		--vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git status" })
+		vim.keymap.set("n", "<leader>gs", function()
+			vim.cmd("G")
+			vim.cmd("wincmd J") -- place la fenêtre courante en bas
+			vim.cmd("resize 25") -- hauteur 12 lignes
+		end, { silent = true, desc = "Fugitive in small bottom split" })
+		local grp = vim.api.nvim_create_augroup("maestro_b_Fugitive", { clear = true })
 
 		local autocmd = vim.api.nvim_create_autocmd
 		autocmd("BufWinEnter", {
-			group = maestro_b_Fugitive,
+			group = grp,
 			pattern = "*",
 			callback = function()
 				if vim.bo.ft ~= "fugitive" then

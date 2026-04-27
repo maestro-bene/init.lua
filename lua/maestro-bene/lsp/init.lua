@@ -1,3 +1,15 @@
+local function root_dir(fname)
+	return vim.fs.root(fname, { ".git" }) or vim.loop.cwd()
+end
+
+local shared_capabilities = vim.lsp.protocol.make_client_capabilities()
+local ok, blink = pcall(require, "blink.cmp")
+if ok then
+	shared_capabilities = blink.get_lsp_capabilities(shared_capabilities)
+end
+
+vim.lsp.config("copilot", require("lsp.copilot"))
+
 vim.lsp.enable({
 	-- "elixirls",
 	"lua_ls",
@@ -15,18 +27,14 @@ vim.lsp.enable({
 	-- "kotlin_language_server",
 	"intelephense",
 	"shellharden",
+	"shfmt",
+	"copilot",
 })
 
--- will be overriden by config in lsp/*.lua
 vim.lsp.config("*", {
-	capabilities = {
-		textDocument = {
-			semanticTokens = {
-				multilineTokenSupport = true,
-			},
-		},
-	},
-	root_markers = { ".git" },
+	capabilities = shared_capabilities,
+	root_dir = root_dir,
+	single_file_support = true,
 })
 
 vim.diagnostic.config({

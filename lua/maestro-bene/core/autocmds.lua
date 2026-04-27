@@ -22,6 +22,37 @@
 -- 		vim.bo.filetype = "terminal"
 -- 	end,
 -- })
+--
+-- Indentation par langage
+local two_spaces = {
+	"lua",
+	"javascript",
+	"javascriptreact",
+	"typescript",
+	"typescriptreact",
+	"json",
+	"yaml",
+	"toml",
+	"html",
+	"css",
+	"scss",
+	"markdown",
+	"bash",
+	"sh",
+	"terraform",
+	"hcl",
+	"ruby",
+}
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = two_spaces,
+	callback = function()
+		vim.opt_local.tabstop = 2
+		vim.opt_local.shiftwidth = 2
+		vim.opt_local.softtabstop = 2
+		vim.opt_local.expandtab = true
+	end,
+})
 
 vim.api.nvim_create_autocmd("BufWritePost", {
 	pattern = { "*tmux.conf" },
@@ -49,3 +80,17 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- 		vim.cmd([[set filetype=sh]])
 -- 	end,
 -- })
+vim.api.nvim_create_autocmd("BufWritePre", {
+	callback = function(args)
+		-- args.match = chemin du buffer (peut être "oil:/..."), args.buf = bufnr
+		local name = args.match or vim.api.nvim_buf_get_name(args.buf)
+		if name:match("^oil:") then
+			return
+		end
+
+		local dir = vim.fn.fnamemodify(name, ":p:h")
+		if dir ~= "" and vim.fn.isdirectory(dir) == 0 then
+			vim.fn.mkdir(dir, "p")
+		end
+	end,
+})
