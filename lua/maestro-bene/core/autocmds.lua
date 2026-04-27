@@ -74,12 +74,6 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	command = "!skhd --restart-service",
 })
 
--- vim.api.nvim_create_autocmd({ "BufRead" }, {
--- 	pattern = { "*.conf" },
--- 	callback = function()
--- 		vim.cmd([[set filetype=sh]])
--- 	end,
--- })
 vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function(args)
 		-- args.match = chemin du buffer (peut être "oil:/..."), args.buf = bufnr
@@ -92,5 +86,33 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		if dir ~= "" and vim.fn.isdirectory(dir) == 0 then
 			vim.fn.mkdir(dir, "p")
 		end
+	end,
+})
+
+local grp = vim.api.nvim_create_augroup("ft_fix", { clear = true })
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+	group = grp,
+	pattern = "*.conf",
+	callback = function(args)
+		local p = vim.api.nvim_buf_get_name(args.buf)
+		if p:match("[/\\]logstash[/\\].-%.conf$") then
+			vim.bo[args.buf].filetype = "logstash"
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "TSUpdate",
+	callback = function()
+		require("nvim-treesitter.parsers").zimbu = {
+			install_info = {
+				path = "~/Code/logstash-syntax-highlighter",
+				-- optional entries:
+				location = "parser",
+				generate = true, -- only needed if repo does not contain pre-generated `src/parser.c`
+				generate_from_json = false, -- only needed if repo does not contain `src/grammar.json` either
+				queries = "queries/logstash", -- also install queries from given directory
+			},
+		}
 	end,
 })

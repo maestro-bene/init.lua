@@ -54,6 +54,7 @@ return {
 				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
 				"trivy", -- code security
+				"shfmt", -- shell and bash formatter
 			},
 		})
 	end,
