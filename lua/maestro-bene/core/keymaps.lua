@@ -20,6 +20,7 @@ keymap.set("n", "J", "mzJ`z")
 -- Centering the cursor when moving up/down half a bufr
 keymap.set("n", "<C-d>", "<C-d>zz")
 keymap.set("n", "<C-u>", "<C-u>zz")
+keymap.set("n", "G", "Gzz")
 
 -- Centering the cursor when iterating over search results
 keymap.set("n", "n", "nzzzv")
