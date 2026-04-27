@@ -5,6 +5,8 @@ return {
 		"hrsh7th/cmp-buffer", -- source for text in buffer
 		"hrsh7th/cmp-cmdline", -- source for text in cmd line of nvim
 		"hrsh7th/cmp-path", -- source for file system paths
+		"hrsh7th/cmp-emoji",
+		"hrsh7th/cmp-nvim-lsp",
 		{
 			"L3MON4D3/LuaSnip",
 			version = "v2.*",
@@ -15,9 +17,15 @@ return {
 		"rafamadriz/friendly-snippets", -- useful snippets
 		"onsails/lspkind.nvim", -- vs-code like pictograms
 		"petertriho/cmp-git",
+		"davidsierradz/cmp-conventionalcommits",
+		"garyhurtz/cmp_kitty",
+		"mtoohey31/cmp-fish",
+		"andersevenrud/cmp-tmux",
 	},
 	config = function()
 		local cmp = require("cmp")
+
+		require("cmp_kitty").setup()
 
 		local luasnip = require("luasnip")
 
@@ -78,6 +86,8 @@ return {
 				{ name = "luasnip" }, -- snippets
 				{ name = "buffer" }, -- text within current buffer
 				{ name = "path" }, -- file system paths
+				-- { name = "kitty" }, -- adapt kitty conf with listen_on and accept_connection
+				{ name = "tmux" },
 			}),
 			-- configure lspkind for vs-code like pictograms in completion menu
 			formatting = {
@@ -90,8 +100,14 @@ return {
 		cmp.setup.filetype("gitcommit", {
 			sources = cmp.config.sources({
 				{ name = "git" }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+				{ name = "conventionalcommits" },
 			}, {
 				{ name = "buffer" },
+			}),
+		})
+		cmp.setup.filetype("fish", {
+			sources = cmp.config.sources({
+				{ name = "fish" },
 			}),
 		})
 		cmp.setup.cmdline({ "/", "?" }, {
@@ -104,6 +120,7 @@ return {
 			mapping = cmp.mapping.preset.cmdline(),
 			sources = cmp.config.sources({
 				{ name = "path" },
+				{ name = "emoji" },
 			}, {
 				{ name = "cmdline" },
 			}),
