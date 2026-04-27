@@ -1,0 +1,49 @@
+-- .config/nvim/lsp/pyright.lua
+return {
+	cmd = { "pyright-langserver", "--stdio" },
+	filetypes = { "python" },
+	root_markers = {
+		"pyproject.toml",
+		"setup.py",
+		"setup.cfg",
+		"requirements.txt",
+		".git",
+		"Pipfile",
+		"pyrightconfig.json",
+		".venv",
+		"venv",
+	},
+	settings = {
+		python = {
+			analysis = {
+				autoSearchPaths = true,
+				diagnosticMode = "workspace",
+				useLibraryCodeForTypes = true,
+				typeCheckingMode = "off", -- Options: "off", "basic", "strict"
+				completeFunctionParens = true,
+				reportMissingImports = true,
+				reportMissingTypeStubs = false,
+				reportUnusedImport = true,
+				reportUnusedVariable = true,
+				reportDuplicateImport = true,
+				reportGeneralTypeIssues = true,
+				reportOptionalMemberAccess = false,
+				reportOptionalSubscript = false,
+				reportOptionalCall = false,
+				reportOptionalIterable = false,
+				reportOptionalContextManager = false,
+				reportOptionalOperand = false,
+				reportPrivateImportUsage = false,
+				inlayHints = {
+					variableTypes = true,
+					functionReturnTypes = true,
+					parameterTypes = true,
+				},
+			},
+			venvPath = "", -- Laissez vide pour auto-détection
+			pythonPath = "", -- Laissez vide pour auto-détection
+		},
+	},
+	single_file_support = true,
+	log_level = vim.lsp.protocol.MessageType.Warning,
+}
