@@ -3,7 +3,9 @@ return {
 	---@module 'oil'
 	---@type oil.SetupOpts
 	opts = {},
-	dependencies = { "nvim-tree/nvim-web-devicons", "benomahony/oil-git.nvim" },
+	dependencies = {
+		"nvim-tree/nvim-web-devicons",
+	},
 	lazy = false,
 	vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "go to current buffer's parent directory" }),
 
@@ -104,6 +106,7 @@ return {
 			},
 			win_options = {
 				winbar = "%!v:lua.get_oil_winbar()",
+				signcolumn = "yes:2",
 			},
 		})
 

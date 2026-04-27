@@ -20,6 +20,7 @@ return {
 					per_filetype = {
 						codecompanion = { "codecompanion" },
 						sql = { "snippets", "dadbod", "buffer" },
+						oil = { "path" },
 					},
 					default = { "lazydev", "lsp", "path", "snippets", "buffer" },
 					providers = {
