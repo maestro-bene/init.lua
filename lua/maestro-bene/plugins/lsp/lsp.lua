@@ -16,11 +16,10 @@ return {
     { "saghen/blink.cmp" },
   },
   config = function()
-    vim.lsp.config("sfhmt", require("lsp.shfmt"))
+    vim.lsp.config("shfmt", require("lsp.shfmt"))
     vim.lsp.config("intelephense", require("lsp.intelephense"))
     vim.lsp.config("lua_ls", require("lsp.lua_ls"))
 
-    vim.lsp.enable("copilot")
     vim.lsp.enable("shfmt")
     vim.lsp.enable("intelephense")
     vim.lsp.enable("jedi_language_server")
