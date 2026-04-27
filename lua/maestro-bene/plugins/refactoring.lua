@@ -12,7 +12,7 @@ return {
 		vim.keymap.set("v", "<leader>rv", ":Refactor extract_var ", { desc = "Refactor extract variable" })
 		vim.keymap.set({ "n", "v" }, "<leader>ri", ":Refactor inline_var", { desc = "Refactor inline variable" })
 
-		vim.keymap.set("n", "<leader>rb", ":Refactor extract_block", { desc = "Refactor extract block" })
+		vim.keymap.set("v", "<leader>rb", ":Refactor extract_block", { desc = "Refactor extract block" })
 		vim.keymap.set(
 			"n",
 			"<leader>rbf",
