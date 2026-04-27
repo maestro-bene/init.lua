@@ -4,6 +4,13 @@ return {
 		"saghen/blink.cmp",
 		dependencies = {
 			"rafamadriz/friendly-snippets",
+			"mgalliou/blink-cmp-tmux",
+			"MahanRahmati/blink-nerdfont.nvim",
+			"moyiz/blink-emoji.nvim",
+			{
+				"bydlw98/blink-cmp-sshconfig",
+				build = "make",
+			},
 		},
 		build = "cargo build --release", -- for delimiters
 		version = "1.*",
@@ -22,7 +29,17 @@ return {
 						sql = { "snippets", "dadbod", "buffer" },
 						oil = { "path" },
 					},
-					default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+					default = {
+						"lazydev",
+						"lsp",
+						"path",
+						"snippets",
+						"buffer",
+						"tmux",
+						"nerdfont",
+						"emoji",
+						"sshconfig",
+					},
 					providers = {
 						lazydev = {
 							name = "LazyDev",
@@ -33,6 +50,56 @@ return {
 							min_keyword_length = 2,
 						},
 						dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+						tmux = {
+							module = "blink-cmp-tmux",
+							name = "tmux",
+							-- default options
+							opts = {
+								-- `panes` option supports these values:
+								-- * `window`  - completions from current tmux window panes only
+								-- * `session` - completions from current tmux session panes only
+								-- * `all`     - completions from all tmux panes
+								panes = "session",
+								capture_history = false,
+								-- only suggest completions from `tmux` if the `trigger_chars` are
+								-- used
+								triggered_only = false,
+								trigger_chars = { "." },
+							},
+						},
+						nerdfont = {
+							module = "blink-nerdfont",
+							name = "Nerd Fonts",
+							score_offset = 15, -- Tune by preference
+							opts = {
+								insert = true, -- Insert nerdfont icon (default) or complete its name
+								trigger = ";", -- Customize the trigger. Defaults to ":"
+							},
+						},
+						emoji = {
+							module = "blink-emoji",
+							name = "Emoji",
+							score_offset = 15, -- Tune by preference
+							opts = {
+								insert = true, -- Insert emoji (default) or complete its name
+								---@type string|table|fun():table
+								trigger = function()
+									return { ":" }
+								end,
+							},
+							should_show_items = function()
+								return vim.tbl_contains(
+									-- Enable emoji completion only for git commits and markdown.
+									-- By default, enabled for all file-types.
+									{ "gitcommit", "markdown" },
+									vim.o.filetype
+								)
+							end,
+						},
+						sshconfig = {
+							name = "SshConfig",
+							module = "blink-cmp-sshconfig",
+						},
 					},
 				},
 				keymap = {

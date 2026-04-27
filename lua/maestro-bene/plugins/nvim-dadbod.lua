@@ -14,21 +14,5 @@ return {
 			pattern = { "sql" },
 			command = [[setlocal omnifunc=vim_dadbod_completion#omni]],
 		})
-
-		-- Source nvim-cmp spécifique pour les buffers SQL
-		local function db_completion()
-			local ok, cmp = pcall(require, "cmp")
-			if not ok then
-				return
-			end
-			cmp.setup.buffer({ sources = { { name = "vim-dadbod-completion" } } })
-		end
-
-		vim.api.nvim_create_autocmd("FileType", {
-			pattern = { "sql", "mysql", "plsql" },
-			callback = function()
-				vim.schedule(db_completion)
-			end,
-		})
 	end,
 }
