@@ -15,13 +15,13 @@ return {
 		mason_null_ls.setup({
 			ensure_installed = {
 				"black", -- python formatter
-				"eslint_d", -- js linter
 				"goimports", -- go imports fmt
 				"gofumpt", -- go fmt
 				"prettier", -- prettier formatter
 				"phpcs", -- php linter
 				"phpcsfixer", -- php formatter
 				"phpcs", -- php linter
+				"quick-lint-js", --js linter
 				"stylua", -- lua formatter
 				"trivy", -- System linter (containers etc)
 			},
@@ -46,12 +46,10 @@ return {
 			"goimports",
 			"gofumpt",
 			"isort",
-			"eslint_d",
 			"mix",
-			"rustfmt",
 			"phpcsfixer",
 		}
-		local diagnosting_server_names = { "phpcs", "eslint_d", "trivy" }
+		local diagnosting_server_names = { "phpcs", "quick_lint_js", "trivy" }
 
 		local sources = {}
 
