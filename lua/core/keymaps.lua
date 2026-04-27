@@ -9,9 +9,6 @@ keymap.set("n", "<leader>sq", ":wq<CR>", { desc = "Write and Exit buffer" })
 keymap.set("n", "<Esc>", ":q<CR>", { desc = "Exit buffer" })
 keymap.set("n", "!<Esc>", ":q!<CR>", { desc = "Exit buffer w/o saving" })
 
-keymap.set("n", "<leader>x", ":.lua<CR>", { desc = "Execute the current line" })
-keymap.set("n", "<leader>X", ":source %<CR>", { desc = "Execute the current file" })
-
 keymap.set("n", "<leader><leader>", ":w<CR>", { desc = "Save buffer" })
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
@@ -23,7 +20,7 @@ keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Append the line below to current line
-keymap.set("n", "J", "mzJ`z")
+keymap.set("n", "<leader>j", "mzJ`z")
 
 -- Centering the cursor when moving up/down half a bufr
 keymap.set("n", "<C-d>", "<C-d>zz")
@@ -35,9 +32,6 @@ keymap.set("n", "n", "nzzzv")
 keymap.set("n", "N", "Nzzzv")
 
 -- Greatest remap ever
-keymap.set("x", "<leader>pe", [["_dP]], { desc = "Seems to be git push" })
-
--- next greatest remap ever : asbjornHaland
 keymap.set("v", "<leader>y", [["+y]], { desc = "Copy into system clipboard" })
 keymap.set("n", "<leader>y", ":%y+<CR>", { desc = "Copy whole file into system clipboard" })
 
@@ -82,28 +76,3 @@ keymap.set(
 
 -- Easily hit escape in terminal mode.
 keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
-
-keymap.set("n", "j", function()
-  local count = vim.v.count
-
-  if count == 0 then
-    return "gj"
-  else
-    return "j"
-  end
-end, { expr = true })
-
-keymap.set("n", "k", function()
-  local count = vim.v.count
-
-  if count == 0 then
-    return "gk"
-  else
-    return "k"
-  end
-end, { expr = true })
-
-keymap.set("n", "<leader>db", ":DBUIToggle<CR>", { desc = "Dadbod Toggle" })
-keymap.set("n", "<leader>D", smart_diff, { desc = "Smart diff (Oil dirs or buffers)" })
-
-keymap.set("n", "<leader>h", ":Dashboard<CR>", { desc = "Go Home" })
