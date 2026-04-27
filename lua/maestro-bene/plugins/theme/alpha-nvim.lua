@@ -69,7 +69,7 @@ return {
 			button("SPC f f", "󰥩   Find file within cwd"),
 			button("SPC f r", "󱋢   Recently opened files"),
 			button("SPC f s", "   Find word within cwd"),
-			button("SPC g B", "   Find git repo's URL"),
+			button("SPC g Y", "   Open file in Gitlab"),
 			button("SPC e e", "   Open NvimTree"),
 		}
 		theme.section.footer.val = "Made by maestro-bene"
