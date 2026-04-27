@@ -4,19 +4,9 @@ local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 local config = {
 	cmd = { "/opt/homebrew/bin/jdtls" },
-	root_dir = vim.fs.dirname(vim.fs.find({
-		".git",
-		"mvnw",
-		"gradlew",
-		"pom.xml",
-		"build.gradle",
-	}, { upward = true })[1]),
+	root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }),
 	settings = {
-		java = {
-			format = {
-				tabSize = 4, -- doens't work idk y
-			},
-		},
+		java = {},
 	},
 	capabilities = cmp_nvim_lsp.default_capabilities(),
 }
