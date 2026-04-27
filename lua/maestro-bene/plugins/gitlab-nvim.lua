@@ -1,6 +1,6 @@
 return {
 	"harrisoncramer/gitlab.nvim",
-	lazy = false,
+	lazy = true,
 	keys = {
 		"glr",
 		"gls",
