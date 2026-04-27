@@ -22,7 +22,7 @@ return {
 			"html",
 			"pylsp",
 			"rust_analyzer",
-			"tsserver",
+			"ts_ls",
 			"jdtls",
 			"kotlin_language_server",
 			-- "intelephense",
