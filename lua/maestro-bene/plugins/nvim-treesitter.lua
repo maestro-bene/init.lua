@@ -44,6 +44,7 @@ return {
 					"java",
 					"python",
 					"rust",
+					"regex",
 					"vim",
 					"vimdoc",
 					"bash",
