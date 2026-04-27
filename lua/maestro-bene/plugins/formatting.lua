@@ -17,6 +17,7 @@ return {
         javascript = { "prettier", "eslint_d" },
         javascriptreact = { "prettier" },
         json = { "prettier" },
+        logstash = { "mustache" },
         markdown = { "prettier" },
         php = { "php_cs_fixer" },
         python = { "isort", "black" },
@@ -25,6 +26,14 @@ return {
         yaml = { "prettier" },
         bash = { "shfmt" },
         sh = { "shfmt" },
+      },
+      formatters = {
+        mustache = {
+          command = "mustache",
+          args = { "format", "-w", "$FILENAME" },
+          stdin = false,
+          -- cwd = require("conform.util").root_file({ ".git" }),
+        },
       },
       format_on_save = {
         lsp_fallback = true,
