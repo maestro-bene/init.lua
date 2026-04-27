@@ -51,7 +51,7 @@ return {
 				"goimports", -- go imports fmt
 				"isort", -- python formatter
 				"prettier", -- prettier formatter
-				"pretty-php", -- php formatter
+				"php-cs-fixer", -- php formatter
 				"phpcs", -- php linter
 				"stylua", -- lua formatter
 				"trivy",
