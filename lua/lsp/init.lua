@@ -11,24 +11,20 @@ end
 vim.lsp.config("copilot", require("lsp.copilot"))
 
 vim.lsp.enable({
-	-- "elixirls",
-	"lua_ls",
-	-- "omnisharp",
 	-- "clangd",
+	"copilot",
 	-- "cssls",
+	-- "elixirls",
 	-- "golangci_lint_ls",
 	-- "gopls",
-	-- "html",
-	-- "pylsp",
-	"jedi_language_server",
-	-- "rust_analyzer",
-	-- "ts_ls",
+	"intelephense", -- PHP
 	-- "jdtls",
-	-- "kotlin_language_server",
-	"intelephense",
-	"shellharden",
-	"shfmt",
-	"copilot",
+	"jedi_language_server",
+	"lua_ls",
+	-- "omnisharp",
+	-- "rust_analyzer",
+	"shfmt", -- Bash
+	-- "ts_ls",
 })
 
 vim.lsp.config("*", {
