@@ -1,6 +1,7 @@
 return {
 	"tpope/vim-fugitive",
-
+	lazy = true,
+	keys = "<leader>gs",
 	config = function()
 		vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git status" })
 		local maestro_b_Fugitive = vim.api.nvim_create_augroup("maestro_b_Fugitive", {})
