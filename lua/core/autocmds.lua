@@ -3,26 +3,26 @@
 -- Add any additional autocmds here
 
 -- Set treesitter highlighting on
--- vim.api.nvim_create_autocmd("FileType", {
--- 	pattern = { "<filetype>" },
--- 	callback = function()
--- 		vim.treesitter.start()
--- 		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
--- 	end,
--- })
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "<filetype>" },
+	callback = function()
+		vim.treesitter.start()
+		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+	end,
+})
 
 -- Set local settings for terminal buffers
--- vim.api.nvim_create_autocmd("TermOpen", {
--- 	group = vim.api.nvim_create_augroup("custom-term-open", {}),
--- 	callback = function()
--- 		vim.opt.set.number = false
--- 		vim.opt.set.relativenumber = false
--- 		vim.opt.set.scrolloff = 0
---
--- 		vim.bo.filetype = "terminal"
--- 	end,
--- })
---
+vim.api.nvim_create_autocmd("TermOpen", {
+	group = vim.api.nvim_create_augroup("custom-term-open", {}),
+	callback = function()
+		vim.opt.set.number = false
+		vim.opt.set.relativenumber = false
+		vim.opt.set.scrolloff = 0
+
+		vim.bo.filetype = "terminal"
+	end,
+})
+
 -- Indentation par langage
 local two_spaces = {
 	"lua",

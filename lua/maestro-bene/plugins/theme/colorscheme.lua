@@ -66,7 +66,6 @@ return {
 			},
 			custom_highlights = {},
 			integrations = {
-				alpha = true,
 				blink_cmp = {
 					style = "bordered",
 				},
@@ -112,7 +111,6 @@ return {
 				neotest = true,
 				noice = true,
 				notify = true,
-				notifier = true,
 				nvim_surround = true,
 				overseer = true,
 				render_markdown = true,

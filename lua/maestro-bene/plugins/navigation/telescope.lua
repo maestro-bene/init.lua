@@ -263,7 +263,12 @@ return {
 		keymap.set("n", "<leader>fm", "<CMD>Telescope media_files<CR>", { desc = "Fuzzy find media files in cwd" })
 
 		-- open file_browser with the path of the current buffer
-		keymap.set("n", "<leader>ee", "<CMD>Telescope file_browser path=%:p:h select_buffer=true<CR>")
+		keymap.set(
+			"n",
+			"<leader>ee",
+			"<CMD>Telescope file_browser path=%:p:h select_buffer=true<CR>",
+			{ desc = "Open in Browser" }
+		)
 
 		keymap.set("n", "<leader>gcl", "<CMD>Telescope neoclip<CR>", { desc = "Neoclip" })
 

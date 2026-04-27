@@ -52,7 +52,7 @@ return {
 				"goimports", -- go imports fmt
 				"isort", -- python formatter
 				"prettier", -- prettier formatter
-				"stylua", -- lua formatter
+				-- "stylua", -- lua formatter
 				"trivy", -- code security
 				"shfmt", -- shell and bash formatter
 			},
