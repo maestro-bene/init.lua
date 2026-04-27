@@ -7,6 +7,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"nvim-treesitter/nvim-treesitter",
 		"nvim-telescope/telescope-github.nvim",
+		"cljoly/telescope-repo.nvim",
 	},
 	config = function()
 		local telescope = require("telescope")
@@ -62,7 +63,7 @@ return {
 		telescope.load_extension("repo")
 		telescope.load_extension("neoclip")
 		telescope.load_extension("gh")
-		--
+
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness
 
