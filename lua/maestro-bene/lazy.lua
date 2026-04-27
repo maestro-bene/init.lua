@@ -25,7 +25,6 @@ require("lazy").setup({
   { import = "maestro-bene.plugins.completion" },
   { import = "maestro-bene.plugins.diagnostics" },
   { import = "maestro-bene.plugins.editing-utils" },
-  { import = "maestro-bene.plugins.extra" },
   { import = "maestro-bene.plugins.lsp" },
   { import = "maestro-bene.plugins.git" },
   { import = "maestro-bene.plugins.navigation" },
@@ -38,6 +37,9 @@ require("lazy").setup({
   },
   change_detection = {
     notify = false,
+  },
+  git = {
+    timeout = 600, -- secondes (ex: 10 min)
   },
   ui = { border = "rounded" },
 })
