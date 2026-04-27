@@ -22,6 +22,7 @@ return {
 					{ "filetype" },
 				},
 			},
+			extensions = { "quickfix", "fugitive", "fzf", "lazy", "man", "mason", "nvim-tree", "trouble" },
 		})
 	end,
 }
