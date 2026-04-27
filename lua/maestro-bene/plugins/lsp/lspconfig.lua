@@ -23,11 +23,13 @@ return {
 			"pyright",
 			"rust_analyzer",
 			"tsserver",
+			"jdtls",
 		}
 
 		local lsps_to_configure = {
 			"elixirls",
 			"lua_ls",
+			"omnisharp",
 		}
 
 		local opts = { noremap = true, silent = true }
@@ -165,6 +167,17 @@ return {
 					capabilities = capabilities,
 					on_attach = on_attach(),
 					cmd = { "~/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" },
+				})
+			elseif my_lsp_tc == "omnisharp" then
+				lspconfig[my_lsp_tc].setup({
+					capabilities = capabilities,
+					on_attach = on_attach(),
+					cmd = {
+						"mono",
+						"--assembly-loader=strict",
+						"/Users/maestro-bene/.lsp/omnisharp-mono/OmniSharp.exe",
+					},
+					use_mono = true,
 				})
 			else
 				lspconfig[my_lsp_tc].setup({
