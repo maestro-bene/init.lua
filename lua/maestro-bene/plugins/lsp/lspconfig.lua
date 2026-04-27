@@ -20,7 +20,7 @@ return {
 			"golangci_lint_ls",
 			"gopls",
 			"html",
-			"pyright",
+			"pylsp",
 			"rust_analyzer",
 			"tsserver",
 			"jdtls",
@@ -64,7 +64,7 @@ return {
 			opts.desc = "See available code actions"
 			keymap.set(
 				{ "n", "v" },
-				"<leader>ca",
+				"<leader>a",
 				vim.lsp.buf.code_action,
 				opts,
 				{ desc = "Code actions (V will apply to selection)" }

@@ -35,7 +35,7 @@ return {
 				"gopls",
 				"html",
 				"lua_ls",
-				"pyright",
+				"pylsp",
 				"rust_analyzer",
 				"tsserver",
 				"intelephense",
