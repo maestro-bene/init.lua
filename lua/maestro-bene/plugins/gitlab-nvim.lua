@@ -1,6 +1,27 @@
 return {
 	"harrisoncramer/gitlab.nvim",
 	lazy = true,
+	keys = {
+		"glr",
+		"gls",
+		"glA",
+		"glR",
+		"glc",
+		"glC",
+		"glO",
+		"glm",
+		"gln",
+		"gld",
+		"glaa",
+		"glad",
+		"glla",
+		"glld",
+		"glra",
+		"glrd",
+		"glp",
+		"glo",
+		"glM",
+	},
 	dependencies = {
 		"MunifTanjim/nui.nvim",
 		"nvim-lua/plenary.nvim",
@@ -14,9 +35,16 @@ return {
 	end, -- Builds the Go binary
 	config = function()
 		local gitlab = require("gitlab")
+		-- local gitlab_server = require("gitlab.server")
 
 		gitlab.setup({
-			debug = { go_request = true, go_response = true },
+			debug = { go_request = false, go_response = false },
+			-- For Gitlab server self-hosted with another port : in the .git/config file, under [core], add :
+			-- sshCommand = ssh -p <PORT>
+			-- and remove in the ssh url the :PORT as such :
+			-- 	url = ssh://git@<gitURL>:PORT/namespace/project.git
+			-- 	to
+			--  url = ssh://git@<gitURL>/namespace/project.git
 		})
 
 		vim.keymap.set("n", "glr", gitlab.review)
