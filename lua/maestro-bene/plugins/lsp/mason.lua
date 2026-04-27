@@ -37,6 +37,8 @@ return {
 				"pyright",
 				"rust_analyzer",
 				"tsserver",
+				"intelephense",
+				"phpactor",
 				"jdtls",
 			},
 			-- auto-install configured servers (with lspconfig)
@@ -51,8 +53,6 @@ return {
 				"goimports", -- go imports fmt
 				"isort", -- python formatter
 				"prettier", -- prettier formatter
-				"php-cs-fixer", -- php formatter
-				"phpcs", -- php linter
 				"stylua", -- lua formatter
 				"trivy",
 			},
