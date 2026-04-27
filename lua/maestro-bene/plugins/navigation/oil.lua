@@ -7,7 +7,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 	lazy = false,
-	vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "go to current buffer's parent directory" }),
+	vim.keymap.set("n", "_", "<CMD>Oil<CR>", { desc = "go to current buffer's parent directory" }),
 
 	config = function()
 		local detail = false

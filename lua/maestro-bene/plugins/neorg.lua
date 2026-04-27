@@ -12,7 +12,11 @@ return {
 			["core.concealer"] = {},
 			["core.dirman"] = {},
 			["core.export"] = {},
-			["core.export.markdown"] = {},
+			["core.export.markdown"] = {
+				config = {
+					extensions = "all",
+				},
+			},
 			["core.presenter"] = {
 				config = { zen_mode = "zen-mode" },
 			},
