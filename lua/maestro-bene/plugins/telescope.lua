@@ -1,5 +1,6 @@
 return {
 	"nvim-telescope/telescope.nvim",
+	event = "VeryLazy",
 	tag = "0.1.5",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -100,5 +101,6 @@ return {
 		keymap.set("n", "<leader>gg", "<cmd>Telescope gh gist<cr>", { desc = "Fuzzy find github gist" })
 		keymap.set("n", "<leader>gr", "<cmd>Telescope gh run<cr>", { desc = "Run github" })
 		keymap.set("n", "<leader>c<leader>", "<cmd>Telescope gpt<cr>", { desc = "Fuzzy find ChatGPT Run" })
+		keymap.set("n", "<leader>ny", "<cmd>Telescope notify<cr>", { desc = "Notify" })
 	end,
 }
