@@ -21,8 +21,10 @@
 - Download the [latest Neovim version](https://github.com/neovim/neovim/wiki/Installing-Neovim) using your OS's package manager (debian or ubuntu : apt, arch : pacman, windows : winget or chocolatey)
 - Download [ripgrep](https://github.com/BurntSushi/ripgrep) following the installation process for your OS
 - Download the "[Hacker Nerd Font](https://www.nerdfonts.com/font-downloads)" or any other nerd font (for the nvim tree icons to display  properly) and install it on your system
-- Set a environment variable called HOME, pointing to the home directory for your user (if not already present)
-- Make a .nvim/undodir directory under the user's home directory
+- Set a environment variable called `HOME`, pointing to the home directory for your user (if not already present)
+- Make a `.nvim/undodir` directory under the user's home directory
+- Make sure to have the latest gcc compiler using your OS's package manager (debian or ubuntu : `apt`, arch : `pacman`, windows : `winget` or `choco`)
+  > Use mingw for example
 
 ----------------------------------
 
