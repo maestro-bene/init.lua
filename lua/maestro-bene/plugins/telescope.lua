@@ -38,6 +38,7 @@ return {
 					"Applications/.*",
 					"deps/.*",
 					"data/.*",
+					".meta",
 				},
 			},
 			extensions = {
