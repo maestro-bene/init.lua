@@ -14,9 +14,7 @@ return {
 
 		mason_null_ls.setup({
 			ensure_installed = {
-				"astyle", -- java formatter
 				"black", -- python formatter
-				"credo", -- elixir fmt
 				"eslint_d", -- js linter
 				"goimports", -- go imports fmt
 				"gofumpt", -- go fmt
@@ -40,7 +38,6 @@ return {
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 		local formatting_server_names = {
-			"astyle",
 			"stylua",
 			"black",
 			"goimports",
@@ -49,8 +46,9 @@ return {
 			"eslint_d",
 			"mix",
 			"rustfmt",
+			"easy-coding-standard",
 		}
-		local diagnosting_server_names = { "credo", "eslint_d" }
+		local diagnosting_server_names = { "eslint_d" }
 
 		local sources = {}
 
