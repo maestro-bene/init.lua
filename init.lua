@@ -1,3 +1,3 @@
-require("maestro-bene.core")
-require("maestro-bene.lsp")
+require("core")
+require("lsp")
 require("maestro-bene.lazy")

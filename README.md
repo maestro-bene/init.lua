@@ -97,3 +97,9 @@ To enable or disable nvim-tree, either :
 
 To finish, here's a little cheat sheet on Vim basic commands / motions for AZERTY keyboards :
 ![Great cheat sheet](/assets/images/cheat-sheet.png)
+
+# Notable future additions
+
+If future testing makes them interesting to keep :
+
+- Overseer

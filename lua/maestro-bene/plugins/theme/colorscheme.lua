@@ -66,11 +66,27 @@ return {
 			},
 			custom_highlights = {},
 			integrations = {
+				alpha = true,
+				blink_cmp = {
+					style = "bordered",
+				},
+				blink_indent = true,
+				buffon = true,
 				cmp = true,
-				gitsigns = true,
-				nvimtree = true,
-				treesitter = true,
-				notify = true,
+				dadbod_ui = true,
+				dashboard = true,
+				flash = true,
+				fzf = true,
+				gitsigns = {
+					enabled = true,
+					-- align with the transparent_background option by default
+					transparent = true,
+				},
+				grug_far = true,
+				harpoon = true,
+				lsp_trouble = true,
+				markdown = true,
+				mason = true,
 				mini = {
 					enabled = true,
 					indentscope_color = "",
@@ -93,17 +109,25 @@ return {
 						background = true,
 					},
 				},
+				neotest = true,
+				noice = true,
+				notify = true,
+				notifier = true,
+				nvim_surround = true,
+				overseer = true,
+				render_markdown = true,
+				scripts = {
+					enabled = true,
+					indent_scope_color = "", -- catppuccin color (eg. `lavender`) Default: overlay2
+				},
 				telescope = {
 					enabled = true,
 				},
-				lsp_trouble = true,
-				harpoon = true,
-				markdown = true,
-				mason = true,
-				-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+				which_key = true,
+				treesitter = true,
 			},
 		})
 
-		vim.cmd.colorscheme("catppuccin")
+		vim.cmd.colorscheme("catppuccin-nvim")
 	end,
 }
