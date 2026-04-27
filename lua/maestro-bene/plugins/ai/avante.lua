@@ -18,7 +18,7 @@ return {
     providers = {
       custom = {
         __inherited_from = "openai",
-        endpoint = "https://llm.openrama.tech.orange:443/v1",
+        endpoint = vim.env.OPENRAMA_API_URL,
         api_key_name = "OPENRAMA_API_KEY",
         -- model = "deepseek-coder-v2-16b",
         -- model = "devstral-small-2-24b",
