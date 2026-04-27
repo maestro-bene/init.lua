@@ -1,7 +1,7 @@
 local keymap = vim.keymap -- for conciseness
 
 -- Dashboard
-keymap.set("n", "<leader>h", ":Dashboard", { desc = "Go Home" })
+keymap.set("n", "<leader>h", ":Dashboard<CR>", { desc = "Go Home" })
 
 -- Telescope
 local telescope = require("telescope")

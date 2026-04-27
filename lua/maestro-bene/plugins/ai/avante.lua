@@ -13,13 +13,13 @@ return {
     -- this file can contain specific instructions for your project
     instructions_file = "avante.md",
 
-    provider = "custom_llama32_3b",
+    provider = "custom",
     mode = "legacy",
     providers = {
       custom = {
         __inherited_from = "openai",
-        endpoint = vim.env.OPENRAMA_API_URL,
-        api_key_name = "OPENRAMA_API_KEY",
+        endpoint = vim.env.AI_API_URL,
+        api_key_name = "AI_API_KEY",
         -- model = "deepseek-coder-v2-16b",
         -- model = "devstral-small-2-24b",
         -- model = "gemma3-12b",
