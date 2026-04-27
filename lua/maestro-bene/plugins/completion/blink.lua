@@ -81,8 +81,8 @@ return {
               name = "Nerd Fonts",
               score_offset = 15, -- Tune by preference
               opts = {
-                insert = true, -- Insert nerdfont icon (default) or complete its name
-                trigger = ";", -- Customize the trigger. Defaults to ":"
+                insert = true,   -- Insert nerdfont icon (default) or complete its name
+                trigger = ";",   -- Customize the trigger. Defaults to ":"
               },
             },
             emoji = {
@@ -90,7 +90,7 @@ return {
               name = "Emoji",
               score_offset = 15, -- Tune by preference
               opts = {
-                insert = true, -- Insert emoji (default) or complete its name
+                insert = true,   -- Insert emoji (default) or complete its name
                 ---@type string|table|fun():table
                 trigger = function()
                   return { ":" }
