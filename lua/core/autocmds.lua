@@ -2,15 +2,6 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 
--- Set treesitter highlighting on
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "<filetype>" },
-  callback = function()
-    vim.treesitter.start()
-    vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-  end,
-})
-
 -- Set local settings for terminal buffers
 vim.api.nvim_create_autocmd("TermOpen", {
   group = vim.api.nvim_create_augroup("custom-term-open", {}),
@@ -81,15 +72,6 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
     if p:match("[/\\]logstash[/\\].-%.conf$") then
       vim.bo[args.buf].filetype = "logstash"
     end
-  end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "Avante",
-  callback = function()
-    -- Forcer le background transparent pour les buffers Avante
-    vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
   end,
 })
 

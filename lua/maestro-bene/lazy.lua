@@ -21,15 +21,15 @@ vim.o.cursorlineopt = "number"
 
 require("lazy").setup({
   { import = "maestro-bene.plugins" },
-  { import = "maestro-bene.plugins.ai" },
+  { import = "maestro-bene.plugins.lsp" },
+  { import = "maestro-bene.plugins.theme" },
+  { import = "maestro-bene.plugins.ui" },
+  { import = "maestro-bene.plugins.navigation" },
   { import = "maestro-bene.plugins.completion" },
   { import = "maestro-bene.plugins.diagnostics" },
   { import = "maestro-bene.plugins.editing-utils" },
-  { import = "maestro-bene.plugins.lsp" },
   { import = "maestro-bene.plugins.git" },
-  { import = "maestro-bene.plugins.navigation" },
-  { import = "maestro-bene.plugins.theme" },
-  { import = "maestro-bene.plugins.ui" },
+  { import = "maestro-bene.plugins.ai" },
 }, {
   checker = {
     enabled = true,
