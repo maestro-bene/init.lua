@@ -8,6 +8,7 @@ Here are my Nvim config files
 - Download [ripgrep](https://github.com/BurntSushi/ripgrep) following the installation process for your OS
 - Download the "[Hacker Nerd Font](https://www.nerdfonts.com/font-downloads)" or any other nerd font (for the nvim tree icons to display properly) and install it on your system
 - Make a `.local/share/nvim/undodir` directory under the user's home directory
+- Remove my custom logstash parser, because unpublished yet
 
 # Notable future additions
 
