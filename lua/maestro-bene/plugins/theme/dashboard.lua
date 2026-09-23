@@ -48,6 +48,11 @@ return {
     end
 
     -- Récents (pas de cd spécial)
+    vim.api.nvim_create_user_command("Zoxide", function()
+      require("telescope").extensions.zoxide.list()
+    end, { desc = "Fuzzy find zoxide list" })
+
+    -- Récents (pas de cd spécial)
     vim.api.nvim_create_user_command("RecentHere", function()
       picker_with_cd("oldfiles", { cwd_only = false }, nil)
     end, { desc = "Fichiers récents (sans cd spécial)" })
@@ -109,8 +114,6 @@ return {
           [[]],
           [[]],
           [[]],
-          [[]],
-          [[]],
           [[      ::::    ::: :::::::::: ::::::::  :::     ::: ::::::::::: ::::    :::::      ]],
           [[      :+:+:   :+: :+:       :+:    :+: :+:     :+:     :+:     +:+:+: :+:+:+      ]],
           [[      :+:+:+  +:+ +:+       +:+    +:+ +:+     +:+     +:+     +:+ +:+:+ +:+      ]],
@@ -141,13 +144,19 @@ return {
           [[        \\     |'       |_.'                          '._|       '|     //        ]],
           [[                                                                                  ]],
           [[]],
-          [[]],
-          [[]],
-          [[]],
-          [[]],
         },
 
         center = {
+          {
+            icon = "⚡",
+            icon_hl = "Title",
+            desc = " Zoxide",
+            desc_hl = "String",
+            key = "z",
+            key_hl = "Number",
+            key_format = " %s",
+            action = "Zoxide",
+          },
           {
             icon = " ",
             icon_hl = "Title",
@@ -236,13 +245,11 @@ return {
             key = "m",
             key_hl = "Number",
             key_format = " %s",
-            action = "MasonUpdate",
+            action = "MasonToolsUpdate",
           },
         },
 
         footer = {
-          [[]],
-          [[]],
           "Made by maestro-bene",
         },
       },
