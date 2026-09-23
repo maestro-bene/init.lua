@@ -9,15 +9,15 @@ keymap.set("n", "<leader>sq", "<CMD>wq<CR>", { desc = "Write and Exit buffer" })
 keymap.set("n", "<Esc>", "<CMD>q<CR>", { desc = "Exit buffer" })
 keymap.set("n", "!<Esc>", "<CMD>q!<CR>", { desc = "Exit buffer w/o saving" })
 
-keymap.set("n", "<leader><leader>", "<CMD>w<CR>", { desc = "Save buffer" })
+keymap.set("n", "<leader><leader>", "<CMD>w!<CR>", { desc = "Save buffer" })
 
 keymap.set("n", "<leader>nh", "<CMD>nohl<CR>", { desc = "Clear search highlights" })
 
 keymap.set("n", "x", '"_x', { desc = "Deleting single char whitout copying into reg" })
 
 -- Move around selected text up and down
-keymap.set("v", "J", "<CMD>m '>+1<CR>gv=gv<CR>")
-keymap.set("v", "K", "<CMD>m '<-2<CR>gv=gv<CR>")
+keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 
 -- Append the line below to current line
 keymap.set("n", "<leader>j", "mzJ`z")
@@ -41,8 +41,8 @@ keymap.set("n", "<C-j>", "<CMD>cprev<CR>zz")
 --keymap.set("n", "<leader>qk", "<CMD>lnext<CR>zz")
 --keymap.set("n", "<leader>qj", "<CMD>lprev<CR>zz")
 
-keymap.set("n", "<leader>sr", [[<CMD>%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left><CR>]],
-  { desc = "Replace word (file)" })
+keymap.set("n", "<leader>sr", [[:%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>]],
+  { noremap = true, desc = "Replace word (file)" })
 keymap.set("n", "<leader>vc", "<CMD>e ~/.config/nvim/<CR>", { desc = "Access nvim config" })
 
 -- Window Management

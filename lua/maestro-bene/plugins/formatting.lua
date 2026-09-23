@@ -10,7 +10,7 @@ return {
         c = { "clang_format" },
         -- cpp = { "astyle" },
         css = { "prettier" },
-        -- elixir = { "mix" },
+        elixir = { "mix" },
         -- go = { "gofumpt", "goimports", "golines" },
         html = { "prettier" },
         -- java = { "jdtls" },
