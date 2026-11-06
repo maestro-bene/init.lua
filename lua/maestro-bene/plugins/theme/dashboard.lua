@@ -93,20 +93,6 @@ return {
       end)
     end, { desc = "Find files dans ~/dev -> cd racine projet (1er dir)" })
 
-    -- Scope: ~/leek -> cd directement dans ~/leek
-    vim.api.nvim_create_user_command("FilesLeek", function()
-      picker_with_cd("find_files", { cwd = vim.fn.expand("~/leek"), hidden = true, follow = true }, function(_)
-        cd_to(vim.fn.expand("~/leek"))
-      end)
-    end, { desc = "Find files dans ~/leek -> cd ~/leek" })
-
-    -- Scope: ~/CI_CD-> cd directement dans ~/pouic
-    vim.api.nvim_create_user_command("FilesCICD", function()
-      picker_with_cd("find_files", { cwd = vim.fn.expand("~/CI_CD/"), hidden = true, follow = true }, function(_)
-        cd_first_after_base(vim.fn.expand("~/CI_CD/"))
-      end)
-    end, { desc = "Find files dans ~/leek -> cd ~/leek" })
-
     require("dashboard").setup({
       theme = "doom",
       config = {
@@ -176,26 +162,6 @@ return {
             key_hl = "Number",
             key_format = " %s",
             action = "FilesHere",
-          },
-          {
-            icon = "󱅽 ",
-            icon_hl = "Title",
-            desc = " Leek",
-            desc_hl = "String",
-            key = "l",
-            key_hl = "Number",
-            key_format = " %s",
-            action = "FilesLeek",
-          },
-          {
-            icon = "󱐍 ",
-            icon_hl = "Title",
-            desc = " CI/CD",
-            desc_hl = "String",
-            key = "c",
-            key_hl = "Number",
-            key_format = " %s",
-            action = "FilesCICD",
           },
           {
             icon = "󰲋 ",

@@ -1,4 +1,5 @@
 local internal_regex = vim.env.GITLAB_INTERNAL_REGEX
+local internal_host = vim.env.GITLAB_INTERNAL_HOST or "https://gitlab.com/"
 return {
   "linrongbin16/gitlinker.nvim",
   lazy = false,
@@ -6,7 +7,7 @@ return {
   opts = {
     router = {
       browse = {
-        [internal_regex] = "https://gitlab.tech.orange/"
+        [internal_regex] = internal_host
             .. "{_A.ORG}/"
             .. "{_A.REPO}/blob/"
             .. "{_A.REV}/"
@@ -15,7 +16,7 @@ return {
             .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
       },
       blame = {
-        [internal_regex] = "https://gitlab.com/"
+        [internal_regex] = internal_host
             .. "{_A.ORG}/"
             .. "{_A.REPO}/blame/"
             .. "{_A.REV}/"
