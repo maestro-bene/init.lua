@@ -1,4 +1,4 @@
-local internal_regex = vim.env.GITLAB_INTERNAL_REGEX
+local internal_regex = vim.env.GITLAB_INTERNAL_REGEX or "^gitlab%.com$"
 local internal_host = vim.env.GITLAB_INTERNAL_HOST or "https://gitlab.com/"
 return {
   "linrongbin16/gitlinker.nvim",
