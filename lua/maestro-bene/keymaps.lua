@@ -7,6 +7,41 @@ keymap.set("n", "<leader>h", "<CMD>Dashboard<CR>", { desc = "Go Home" })
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 
+-- Grug-far
+keymap.set("n", "<leader>sr",
+  '<CMD>lua require("grug-far").open({ prefills = { paths = vim.fn.expand("%"), search = vim.fn.expand("<cword>") } })<CR>',
+  { noremap = true, desc = "Replace word (file)" })
+
+keymap.set({ 'n', 'x' }, '<leader>ss', function()
+  local search = vim.fn.getreg('/')
+  -- surround with \b if "word" search (such as when pressing `*`)
+  if search and vim.startswith(search, '\\<') and vim.endswith(search, '\\>') then
+    search = '\\b' .. search:sub(3, -3) .. '\\b'
+  elseif search and vim.startswith(search, '\\V') then
+    search = search:sub(3)
+  end
+  local inst = require('grug-far').open({
+    prefills = {
+      search = search,
+      paths = vim.fn.expand("%"),
+    },
+  })
+  inst:when_ready(function()
+    inst:goto_input('replacement')
+  end)
+end, { desc = 'grug-far: Search using @/ register value or visual selection' })
+
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('grug-far-keymap', { clear = true }),
+  pattern = { 'grug-far' },
+  callback = function()
+    -- jump back to first input by hitting left arrow in normal mode:
+    vim.keymap.set('n', '<left>', function()
+      require('grug-far').get_instance(0):goto_first_input()
+    end, { buffer = true })
+  end,
+})
+
 -- LSP Navigation avec Telescope
 keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Go to definition" })
 keymap.set("n", "gr", builtin.lsp_references, { desc = "Show references" })

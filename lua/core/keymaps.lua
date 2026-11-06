@@ -41,8 +41,8 @@ keymap.set("n", "<C-j>", "<CMD>cprev<CR>zz")
 --keymap.set("n", "<leader>qk", "<CMD>lnext<CR>zz")
 --keymap.set("n", "<leader>qj", "<CMD>lprev<CR>zz")
 
-keymap.set("n", "<leader>sr", [[:%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>]],
-  { noremap = true, desc = "Replace word (file)" })
+-- keymap.set("n", "<leader>sr", [[:%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>]],
+--   { noremap = true, desc = "Replace word (file)" })
 keymap.set("n", "<leader>vc", "<CMD>e ~/.config/nvim/<CR>", { desc = "Access nvim config" })
 
 -- Window Management
