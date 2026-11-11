@@ -1,3 +1,4 @@
+local obsidian_vault = vim.env.OBSIDIAN_VAULT
 return {
   "obsidian-nvim/obsidian.nvim",
   version = "*",
@@ -7,7 +8,7 @@ return {
     workspaces = {
       {
         name = "Notes",
-        path = "/mnt/c/Users/WHJC4315/SharingSpace/Notes/",
+        path = obsidian_vault or (vim.fn.stdpath("data") .. "/obsidian-vault"),
       },
     },
     templates = {

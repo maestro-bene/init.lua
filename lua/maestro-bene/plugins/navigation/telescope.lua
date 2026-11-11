@@ -32,6 +32,7 @@ return {
 
     local exclude_dirs = {
       ".asdf",
+      ".cache",
       ".obsidian",
       ".vim/bundle",
       ".docker",

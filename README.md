@@ -1,17 +1,32 @@
-# 🚄 ⚡ Nvim's ultimate config files
+# Neovim configuration
 
-Here are my Nvim config files
+This configuration is managed as part of the dotfiles repository with chezmoi. The canonical source lives at `private_dot_config/nvim`; the separate legacy repository is retained unchanged for now.
 
-## ❗ Things to note before cloning, and building the nvim environment
+## Requirements
 
-- Download the [latest Neovim version](https://github.com/neovim/neovim/wiki/Installing-Neovim) using your OS's package manager (debian or ubuntu : apt, arch : pacman, windows : winget or chocolatey)
-- Download [ripgrep](https://github.com/BurntSushi/ripgrep) following the installation process for your OS
-- Download the "[Hacker Nerd Font](https://www.nerdfonts.com/font-downloads)" or any other nerd font (for the nvim tree icons to display properly) and install it on your system
-- Make a `.local/share/nvim/undodir` directory under the user's home directory
-- Remove my custom logstash parser, because unpublished yet
+- Neovim (current stable release or newer), Git, and `ripgrep`.
+- A C compiler, `make`, CMake, and Rust/Cargo for native plugin builds. The portable setup provides the macOS Xcode command line tools or the Ubuntu/Debian `build-essential`/CMake packages.
+- Node.js and npm for some language tooling and plugins; the mise manifest provides Node.js.
+- Python 3 on `PATH` for the optional Python provider; Python provider packages can be installed with `python3 -m pip install --user pynvim` if Python plugins need it.
+- Some filetype-specific servers and formatters are installed separately by Mason and may require additional system libraries or language toolchains.
+- A Nerd Font is recommended for icons.
+- A clipboard provider is recommended (e.g. `pbcopy` on macOS or `wl-clipboard` on Wayland).
 
-# Notable future additions
+The dotfiles mise manifest (`~/.config/mise/config.toml`) declares shared language/tool versions. Mason also installs configured LSP servers and formatters when Neovim starts. Some language-specific tools are optional and only needed for the corresponding filetypes.
 
-If future testing makes them interesting to keep :
+## First launch
 
-- Overseer
+1. Install the dotfiles requirements and apply chezmoi, following the root README.
+2. Start `nvim`. `lazy.nvim` bootstraps itself and installs the pinned plugins from `lazy-lock.json`.
+3. Wait for plugin installation/builds to finish, then restart Neovim. Treesitter parsers and Mason tools may install on first launch.
+
+To review plugins, use `:Lazy`. To review LSP servers and tools, use `:Mason`.
+
+## Optional settings
+
+- Set `OBSIDIAN_VAULT` to the path of an existing Obsidian vault. Without it, the config uses a harmless default under Neovim's data directory.
+- If a language is not part of your workflow, its Mason/LSP tools can be skipped; missing tools affect that language's integrations rather than basic editing.
+
+## Platform notes
+
+The core configuration targets macOS and Ubuntu/Debian, including WSL. WSL-specific clipboard integration and GUI-specific behavior depend on your terminal/WSL setup. Arch Linux/Omarchy is not yet in the supported install path.

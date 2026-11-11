@@ -1,5 +1,4 @@
 -- To see/edit the <leader>, see ./general.lua
-
 local keymap = vim.keymap -- for conciseness
 
 -- GENERAL KEYMAPS
@@ -31,9 +30,23 @@ keymap.set("n", "G", "Gzz")
 keymap.set("n", "n", "nzzzv")
 keymap.set("n", "N", "Nzzzv")
 
--- Greatest remap ever
-keymap.set("v", "<leader>y", [["+y]], { desc = "Copy into system clipboard" })
-keymap.set("n", "<leader>y", "<CMD>%y+<CR>", { desc = "Copy whole file into system clipboard" })
+-- Copy code as a Markdown fence without disturbing the visual selection or cursor
+keymap.set("v", "<leader>y", function()
+  vim.cmd('normal!"vy')
+  local text = vim.fn.getreg('v')
+  text = text:gsub("\n$", "")
+  local filetype = vim.bo.filetype
+  vim.fn.setreg('+', "```" .. filetype .. "\n" .. text .. "\n```")
+  vim.notify("Selection copied in system clipboard", vim.log.levels.INFO, { title = "Clipboard" })
+end, { desc = "Copy selection wrapped in code block with filetype into system clipboard" })
+
+keymap.set("n", "<leader>y", function()
+  local lines    = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+  local text     = table.concat(lines, "\n")
+  local filetype = vim.bo.filetype
+  vim.fn.setreg('+', "```" .. filetype .. "\n" .. text .. "\n```")
+  vim.notify("Buffer copied in system clipboard", vim.log.levels.INFO, { title = "Clipboard" })
+end, { desc = "Copy entier buffer in code block with filetype into system clipboard" })
 
 -- quickfix list commands
 keymap.set("n", "<C-k>", "<CMD>cnext<CR>zz")
@@ -50,10 +63,73 @@ keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
 
-keymap.set("n", "<c-j>", "<c-w><c-j>")
-keymap.set("n", "<c-k>", "<c-w><c-k>")
-keymap.set("n", "<c-l>", "<c-w><c-l>")
-keymap.set("n", "<c-h>", "<c-w><c-h>")
+-- Move through Neovim splits first; at a split edge, ask Rex to focus
+-- a neighboring block. Outside Rex the edge behavior remains a no-op.
+local function navigate_split_or_rex(direction, rex_direction)
+  return function()
+    local block_id = vim.env.REX_BLOCK
+    if block_id == nil or block_id == "" then
+      local tmux_command = "TmuxNavigate" .. ({ h = "Left", j = "Down", k = "Up", l = "Right" })[direction]
+      if vim.fn.exists(":" .. tmux_command) == 2 then
+        vim.cmd(tmux_command)
+      else
+        vim.cmd.wincmd(direction)
+      end
+      return
+    end
+
+    local previous_window = vim.api.nvim_get_current_win()
+    vim.cmd.wincmd(direction)
+    if vim.api.nvim_get_current_win() ~= previous_window then
+      return
+    end
+
+    if vim.fn.executable("rex") ~= 1 then
+      return
+    end
+
+    local code = string.format(
+      'local result = rex.call("session.describe_block", { session_id = os.getenv("REX_SESSION"), block_id = %q }); if result == nil or result.block == nil then return nil end; rex.client.queue("pane.focus." .. %q)',
+      block_id,
+      rex_direction
+    )
+    local session = vim.env.REX_SESSION
+    if session == nil or session == "" then
+      return
+    end
+
+    local client_id = vim.env.REX_CLIENT
+    if client_id == nil or client_id == "" then
+      local clients_json = vim.fn.system({ "rex", "client", "ls", "--json", "-s", session })
+      if vim.v.shell_error ~= 0 then
+        vim.notify("Could not identify the Rex app client: " .. clients_json, vim.log.levels.WARN)
+        return
+      end
+      local ok, clients = pcall(vim.json.decode, clients_json)
+      if ok and clients.clients ~= nil then
+        for _, client in ipairs(clients.clients) do
+          if client.info ~= nil and client.info.kind == "app" then
+            client_id = client.client_id
+            break
+          end
+        end
+      end
+    end
+    if client_id == nil or client_id == "" then
+      return
+    end
+
+    local output = vim.fn.system({ "rex", "-C", client_id, "do", "-e", code, "--json" })
+    if vim.v.shell_error ~= 0 then
+      vim.notify("Rex pane navigation failed: " .. output, vim.log.levels.WARN)
+    end
+  end
+end
+
+keymap.set("n", "<c-h>", navigate_split_or_rex("h", "left"), { desc = "Navigate split or pane left" })
+keymap.set("n", "<c-j>", navigate_split_or_rex("j", "down"), { desc = "Navigate split or pane down" })
+keymap.set("n", "<c-k>", navigate_split_or_rex("k", "up"), { desc = "Navigate split or pane up" })
+keymap.set("n", "<c-l>", navigate_split_or_rex("l", "right"), { desc = "Navigate split or pane right" })
 
 keymap.set(
   "n",
